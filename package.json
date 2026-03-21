@@ -11,5 +11,16 @@
     "url": "git+https://github.com/lex-corvinus/swed-tech.git"
   },
   "license": "MIT",
-  "type": "commonjs"
+  "type": "commonjs",
+  "devDependencies": {
+    "vite": "^8.0.1",
+    "vite-plugin-singlefile": "^2.3.2",
+    "vitest": "^4.1.0"
+  },
+
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "test": "vitest"
+  }
 }
