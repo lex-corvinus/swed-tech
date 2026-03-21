@@ -1,0 +1,15 @@
+{
+  "name": "swed-tech",
+  "version": "1.0.0",
+  "description": "",
+  "homepage": "https://github.com/lex-corvinus/swed-tech#readme",
+  "bugs": {
+    "url": "https://github.com/lex-corvinus/swed-tech/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lex-corvinus/swed-tech.git"
+  },
+  "license": "MIT",
+  "type": "commonjs"
+}
