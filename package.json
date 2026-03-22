@@ -12,16 +12,18 @@
   },
   "license": "MIT",
   "type": "commonjs",
-
   "devDependencies": {
     "vite": "=8.0.1",
     "vite-plugin-singlefile": "=2.3.2",
     "vitest": "=4.1.0"
   },
-
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "test": "vitest"
+  },
+  "dependencies": {
+    "@fontsource/roboto": "=5.2.10",
+    "@fontsource/roboto-mono": "=5.2.8"
   }
 }

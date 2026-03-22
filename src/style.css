@@ -1,0 +1,79 @@
+@import "@fontsource/roboto/100.css";
+@import "@fontsource/roboto/300.css";
+@import "@fontsource/roboto/400.css";
+@import "@fontsource/roboto/500.css";
+@import "@fontsource/roboto/700.css";
+@import "@fontsource/roboto/900.css";
+
+@import "@fontsource/roboto-mono/400.css";
+@import "@fontsource/roboto-mono/700.css";
+
+:root {
+    /* ACCENT/ACTION */
+    --primary-active: #FF5F00;
+    --primary-inactive: #FFBF99;
+
+    --secondary-active: #FDC92A;
+    --secondary-inactive: #F1EEEE;
+
+    /* TEXTS */
+    --text-main: #512B2B;
+    --text-main-alt: #512B2B29;
+    --text-header: #FB4F00;
+    --text-alternative: #257886;
+
+    /* BACKGROUND */
+    --bg-inner: #ffffff;
+    --bg-outer: #FDF6EE;
+    --bg-alternative: #FEECE0;
+    --bg-alternative2: #FFE4C5;
+}
+
+/* override */
+p {
+    margin: 0;
+}
+h1, h2, h3 {
+    color: var(--primary-active);
+}
+
+#app-root {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-top: 32px;
+}
+
+body {
+
+    border-top: 3px solid var(--primary-active);
+    background: var(--bg-outer);
+
+    font-family: 'Roboto', sans-serif;
+
+    margin: 0;
+}
+
+.outlet-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 4fr 1fr;
+    grid-template-rows: 1fr;
+    width: 100%;
+    height: auto;
+    align-items: center;
+    min-height: 100vh;
+}
+.outlet-wrapper > * {
+    grid-column: 2;
+}
+
+.main-content-window {
+    border-radius: 1rem;
+    background: var(--bg-inner);
+    box-sizing: border-box;
+    padding: 2.5rem;
+    margin-bottom: 2rem;
+    width: 100%;
+    height: auto;
+}

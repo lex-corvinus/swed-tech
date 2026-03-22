@@ -1,4 +1,4 @@
-import { Home } from './Home.js';
+import { Home } from './pages/Home.js';
 
 const routes = {
     "/": { title: "Home", render: Home },
