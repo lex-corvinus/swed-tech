@@ -156,12 +156,12 @@ body {
     align-items: center;
     justify-content: center;
 
-    padding: 0 20px; /* Horizontal size of the button */
+    padding: 0 1rem; /* Horizontal size of the button */
     height: 100%;
 
     text-decoration: none;
     color: #512B2B;
-    font-size: 14px;
+    font-size: 1rem;
     transition: background-color 0.2s ease;
 }
 
@@ -173,4 +173,27 @@ body {
     box-shadow: inset 0 -4px 0 0 #FF5F00;
     font-weight: 500;
     color: #000000;
+}
+
+/*MAIN OUTLET WRAPPER*/
+.outlet-wrapper {
+    display: grid;
+    grid-template-columns: 1.8fr 3.5fr 1.8fr;
+    grid-template-rows: 1fr;
+    width: 100%;
+    height: auto;
+    align-items: center;
+    min-height: 100vh;
+}
+.outlet-wrapper > * {
+    /* This forces all direct children of main to stay in the center column */
+    grid-column: 2;
+}
+
+#app-root {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-top: 2rem;
 }
