@@ -1,0 +1,118 @@
+.calculator-header{
+    display: flex;
+    flex-direction: column;
+
+    width: 100%;
+    height: auto;
+}
+.calculator-header-top{
+    display: flex;
+    justify-content: space-between;
+
+    padding-bottom: 1rem;
+
+    width: 100%;
+    height: auto;
+
+    color: var(--primary-active);
+}
+.calculator-header-bot{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    border-top: 2px solid var(--text-main-alt);
+
+    padding-top: 2rem;
+
+    width: 100%;
+    height: auto;
+
+    color: var(--text-main);
+    font-size: 16px;
+}
+#step-desc {
+    flex: 1;
+    padding-right: 2rem;
+    color: var(--text-main);
+}
+
+.calculator-steps {
+    display: flex;
+    gap: 1rem;
+}
+
+.step-indicator {
+    font-family: 'Roboto Mono', monospace;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: 4px solid var(--steps-outer);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 24px;
+    font-weight: bold;
+    color: var(--steps-text-active);
+}
+.icon-completed {
+    background-color: var(--steps-completed);
+    color: var(--steps-text-completed);
+}
+.icon-active {
+    background-color: var(--steps-active);
+}
+.icon-inactive {
+    background-color: var(--steps-inactive);
+    color: var(--steps-text-inactive);
+}
+
+.steps-navigation {
+    display: flex;
+
+    gap: 2rem;
+    flex-shrink: 0;
+}
+.step-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    gap: 0.5rem;
+    padding: 0;
+
+    border: none;
+    cursor: pointer;
+
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+
+    color: #31a4b4;
+    background: transparent;
+}
+
+.step-btn:disabled {
+    color: #e0e0e0;
+    cursor: not-allowed;
+    text-decoration-color: #e0e0e0;
+}
+.triangle-left, .triangle-right {
+    width: 0;
+    height: 0;
+    border-top: 25px solid transparent;
+    border-bottom: 25px solid transparent;
+}
+.triangle-left {
+    border-right: 45px solid currentColor;
+    margin: 0;
+}
+
+.triangle-right {
+    border-left: 45px solid currentColor;
+    margin: 0;
+}
