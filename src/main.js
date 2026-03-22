@@ -4,6 +4,7 @@ import { Footer } from './partials/Footer.js';
 import {initRouter} from "./router";
 
 import "./styles/calculator.css";
+import "./styles/header.css";
 
 const initLayout = () => {
     const headerContainer = document.querySelector('header');
