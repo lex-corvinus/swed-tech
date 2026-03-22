@@ -1,0 +1,26 @@
+.footer-wrapper {
+    border-top: 8px solid var(--primary-active);
+    background: var(--bg-inner);
+    color: var(--text-main);
+
+    width: 100%;
+}
+
+.footer-content {
+    display: flex;
+    padding: 2rem 1rem;
+}
+
+.footer-content-col {
+    margin-right: 2rem;
+}
+
+.footer-content-col p {
+    margin: 0.5rem 0;
+}
+
+.footer-legal {
+    border-top: 1px solid var(--text-main-alt);
+    text-align: center;
+    padding: 1rem;
+}
