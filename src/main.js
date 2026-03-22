@@ -1,6 +1,9 @@
-import { Header } from './layouts/Header.js';
-import { Footer } from './layouts/Footer.js';
+import { Header } from './partials/Header.js';
+import { Footer } from './partials/Footer.js';
+
 import {initRouter} from "./router";
+
+import "./styles/calculator.css";
 
 const initLayout = () => {
     const headerContainer = document.querySelector('header');
@@ -10,7 +13,6 @@ const initLayout = () => {
     footerContainer.innerHTML = Footer();
 };
 document.addEventListener("DOMContentLoaded", () => {
-
 
     initLayout();
 
