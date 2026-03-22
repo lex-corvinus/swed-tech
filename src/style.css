@@ -77,3 +77,64 @@ body {
     width: 100%;
     height: auto;
 }
+
+/* HEADER */
+.header-wrapper {
+    display: grid;
+
+    grid-template-columns: 1fr 5fr 1fr;
+    grid-template-rows: 1fr;
+
+    /* Width: fill */
+    width: 100%;
+
+    /* Height: hug */
+    height: auto;
+
+    /* Optional: Vertically center items in the row */
+    align-items: center;
+
+    /* Optional: Add padding so content doesn't touch screen edges */
+    padding: 1rem 0;
+}
+
+.header-content {
+    display: flex;
+    flex-direction: column;
+
+    width: 100%;  /* Fill */
+    height: auto; /* Hug */
+
+    /* Centering logic for the stack */
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem; /* Space between the column items */
+}
+
+.header-row-top{
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+}
+
+.header-row-mid{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.header-row-bot{
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    width: 100%;
+}
+.header-row-bot .navbar {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+}
+.header-row-bot .right-item {
+    text-align: right;
+}
