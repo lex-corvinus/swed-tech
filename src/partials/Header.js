@@ -1,6 +1,5 @@
 export const Header = () => {
-
-    return `
+	return `
     <div class="header-wrapper">
         
         <div class="header-content">

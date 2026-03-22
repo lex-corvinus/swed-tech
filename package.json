@@ -1,29 +1,34 @@
 {
-  "name": "swed-tech",
-  "version": "1.0.0",
-  "description": "",
-  "homepage": "https://github.com/lex-corvinus/swed-tech#readme",
-  "bugs": {
-    "url": "https://github.com/lex-corvinus/swed-tech/issues"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/lex-corvinus/swed-tech.git"
-  },
-  "license": "MIT",
-  "type": "commonjs",
-  "devDependencies": {
-    "vite": "=8.0.1",
-    "vite-plugin-singlefile": "=2.3.2",
-    "vitest": "=4.1.0"
-  },
-  "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "test": "vitest"
-  },
-  "dependencies": {
-    "@fontsource/roboto": "=5.2.10",
-    "@fontsource/roboto-mono": "=5.2.8"
-  }
+	"name": "swed-tech",
+	"version": "1.0.0",
+	"description": "",
+	"homepage": "https://github.com/lex-corvinus/swed-tech#readme",
+	"bugs": {
+		"url": "https://github.com/lex-corvinus/swed-tech/issues"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/lex-corvinus/swed-tech.git"
+	},
+	"license": "MIT",
+	"type": "module",
+	"devDependencies": {
+		"@biomejs/biome": "2.4.8",
+		"vite": "=8.0.1",
+		"vite-plugin-singlefile": "=2.3.2",
+		"vitest": "=4.1.0"
+	},
+	"scripts": {
+		"dev": "vite",
+		"build": "vite build",
+		"test": "vitest",
+
+		"format": "biome format --write .",
+		"lint": "biome lint .",
+		"check": "biome check --write ."
+	},
+	"dependencies": {
+		"@fontsource/roboto": "=5.2.10",
+		"@fontsource/roboto-mono": "=5.2.8"
+	}
 }

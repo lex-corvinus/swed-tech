@@ -1,9 +1,9 @@
 export const Step3 = {
-    render: () => {
-        return `
+	render: () => {
+		return `
         <div id="step3" class="form-step">
 
         </div>
         `;
-    },
-}
+	},
+};
