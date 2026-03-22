@@ -2,8 +2,6 @@ export const Header = () => {
 
     return `
     <div class="header-wrapper">
-    
-        <div></div>
         
         <div class="header-content">
         
@@ -25,7 +23,7 @@ export const Header = () => {
             
                 <div class="left-item">Icon</div>
                 
-                    <nav>
+                    <nav  class="navbar">
                         <a href="/" data-link>Home</a>
                         <a href="/intro" data-link>Intro</a>
                         <a href="/loan-calculator" data-link>Loan Calculator</a>
@@ -35,8 +33,6 @@ export const Header = () => {
                 <div class="right-item">Search</div>
             </div>
         </div>
-        
-        <div></div>
     </div>
-    `;
+  `;
 };

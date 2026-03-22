@@ -15,6 +15,9 @@ const renderPage = () => {
     document.title = route.title;
 
     document.getElementById("app-root").innerHTML = route.render();
+
+    // updating navbar
+    updateActiveLink();
 };
 export const navigateTo = (url) => {
     window.history.pushState(null, null, url);
@@ -23,4 +26,22 @@ export const navigateTo = (url) => {
 export const initRouter = () => {
     window.addEventListener("popstate", renderPage);
     renderPage();
+};
+
+// tracking page state
+const updateActiveLink = () => {
+    const path = window.location.pathname;
+
+    // Select all links in your navbar
+    const navLinks = document.querySelectorAll('.navbar a');
+
+    navLinks.forEach(link => {
+        // Remove active class from everyone first
+        link.classList.remove('active');
+
+        // Add active class if the href matches the current path
+        if (link.getAttribute('href') === path) {
+            link.classList.add('active');
+        }
+    });
 };
