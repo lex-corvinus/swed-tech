@@ -3,50 +3,51 @@ import { LoanCalculator } from './pages/calculator/LoanCalculator.js';
 
 const routes = {
     "/": { title: "Home", render: Home },
-    "/intro": { title: "Intro", render: () => "<h1>Intro</h1>" },
     "/loan-calculator": { title: "Loan Calculator", render: LoanCalculator.render, init: LoanCalculator.init},
     "/test": { title: "Test", render: () => "<h1>TEST</h1>" },
 
     "404": { title: "404", render: () => "<h1>Page Not Found</h1>" }
 };
 
+const getPathFromHash = () => {
+    let hash = window.location.hash.slice(1);
+    return hash ? hash : "/";
+};
+
 const renderPage = () => {
-    const path = window.location.pathname;
+    const path = getPathFromHash();
     const route = routes[path] || routes["404"];
     document.title = route.title;
 
     document.getElementById("app-root").innerHTML = route.render();
 
-    // updating navbar
-    updateActiveLink();
-
     if (route.init) {
         route.init();
     }
+
+    updateActiveNavbarLink(path);
 };
+
 export const navigateTo = (url) => {
-    window.history.pushState(null, null, url);
-    renderPage();
-};
-export const initRouter = () => {
-    window.addEventListener("popstate", renderPage);
-    renderPage();
+    window.location.hash = url;
 };
 
-// tracking page state
-const updateActiveLink = () => {
-    const path = window.location.pathname;
-
-    // Select all links in your navbar
-    const navLinks = document.querySelectorAll('.navbar a');
+const updateActiveNavbarLink = (currentPath) => {
+    const navLinks = document.querySelectorAll('a[data-link]');
 
     navLinks.forEach(link => {
-        // Remove active class from everyone first
         link.classList.remove('active');
 
-        // Add active class if the href matches the current path
-        if (link.getAttribute('href') === path) {
+        const href = link.getAttribute('href');
+        const linkPath = href.startsWith('#') ? href.slice(1) : href;
+
+        if (linkPath === currentPath) {
             link.classList.add('active');
         }
     });
+};
+
+export const initRouter = () => {
+    window.addEventListener("hashchange", renderPage);
+    renderPage();
 };

@@ -24,10 +24,9 @@ export const Header = () => {
                 <div class="left-item">Icon</div>
                 
                     <nav  class="navbar">
-                        <a href="/" data-link>Home</a>
-                        <a href="/intro" data-link>Intro</a>
-                        <a href="/loan-calculator" data-link>Loan Calculator</a>
-                        <a href="/extra" data-link>Extra</a>
+                        <a href="#/" data-link>Home</a>
+                        <a href="#/loan-calculator" data-link>Loan Calculator</a>
+                        <a href="#/extra" data-link>Extra</a>
                     </nav>
                     
                 <div class="right-item">Search</div>
