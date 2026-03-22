@@ -5,6 +5,7 @@ import {initRouter} from "./router";
 
 import "./styles/calculator.css";
 import "./styles/header.css";
+import "./styles/home.css";
 
 const initLayout = () => {
     const headerContainer = document.querySelector('header');
