@@ -5,7 +5,7 @@ import { Step4 } from "./Step4.js";
 import { Step5 } from "./Step5.js";
 
 import { Component } from "../../core/Component.js";
-import { storage } from "../../utils/storage.js";
+import { storage } from "../../core/storage.js";
 
 const stepComponents = {
 	1: Step1,
