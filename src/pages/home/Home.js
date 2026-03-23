@@ -134,11 +134,9 @@ export const Home = () => {
         
         <div class="lower-main-content-window">
           
-          <button class="start-btn"
-            onclick="window.location.hash='/loan-calculator'; window.scrollTo(0,0);"
-            >
+          <a href="#/loan-calculator" class="start-btn" style="text-decoration: none;" onclick="window.scrollTo(0,0);">
             START APPLICATION
-          </button>
+          </a>
         </div>
     </div>
 `;
