@@ -1,7 +1,7 @@
 import { Footer } from "./partials/Footer.js";
 import { Header } from "./partials/Header.js";
 
-import { initRouter } from "./router";
+import { initRouter } from "./core/router.js";
 
 import "./styles/calculator.css";
 import "./styles/header.css";

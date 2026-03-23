@@ -1,9 +1,13 @@
-export const Step3 = {
-	render: () => {
-		return `
-        <div id="step3" class="form-step">
+import { Component } from '../../core/Component.js';
 
-        </div>
+export class Step3 extends Component {
+	render() {
+		return `
+            <div class="step-content">
+                <h3>Step 3 SLOT</h3>
+            </div>
         `;
-	},
-};
+	}
+
+	// Step-specific logic
+}
