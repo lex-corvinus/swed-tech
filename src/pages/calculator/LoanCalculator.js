@@ -5,6 +5,7 @@ import { Step4 } from "./Step4.js";
 import { Step5 } from "./Step5.js";
 
 import {Component} from "../../core/Component.js";
+import {storage} from "../../utils/storage.js";
 
 const stepComponents = {
 	1: Step1,
@@ -14,25 +15,40 @@ const stepComponents = {
 	5: Step5
 };
 
-const stepDescription = {
-	1: "Step1 desc",
-	2: "Step2 desc",
-	3: "Step3 desc",
-	4: "Step4 desc",
-	5: "Step5 desc"
-}
+const stepsData = {
+	1: { title: "Step 1: Employment Status", desc: "Step1 desc" },
+	2: { title: "Step 2: Loan Calculator", desc: "Step2 desc" },
+	3: { title: "Step 3: Consents", desc: "Step3 desc" },
+	4: { title: "Step 4: Additional Info", desc: "Step4 desc" },
+	5: { title: "Summary:", desc: "Step5 desc" }
+};
 
 export class LoanCalculator extends Component {
 	constructor(containerElement) {
+		const savedState = storage.load();
 
 		super(containerElement, {
 			currentStep: 1,
 			totalSteps: 5,
-			formData: {}
+			formData: savedState.formData
 		});
 
 		this.activeStepInstance = null;
 		this.updateDOM();
+	}
+
+	persist() {
+		storage.save({
+			currentStep: this.state.currentStep,
+			formData: this.state.formData
+		});
+	}
+
+	updateGlobalData(newData) {
+		this.setState({
+			formData: { ...this.state.formData, ...newData }
+		});
+		this.persist();
 	}
 
 	// helper for step indicators
@@ -72,10 +88,12 @@ export class LoanCalculator extends Component {
 
 		if (target.id === 'btn-next' && this.state.currentStep < this.state.totalSteps) {
 			this.setState({ currentStep: this.state.currentStep + 1 });
+			this.persist();
 		}
 
 		if (target.id === 'btn-back' && this.state.currentStep > 1) {
 			this.setState({ currentStep: this.state.currentStep - 1 });
+			this.persist();
 		}
 	}
 
@@ -88,7 +106,7 @@ export class LoanCalculator extends Component {
 
 			<div class="main-content-window calculator-header">
 				<div class="calculator-header-top">
-					<h2 class="step-title">Step ${currentStep}:</h2>
+					<h2 class="step-title">${stepsData[currentStep].title}</h2>
 					
 					<div class="calculator-steps">
 						<div class="step-indicator ${this.getIndicatorClass(1)}" id="ind-1">I</div>
@@ -99,7 +117,7 @@ export class LoanCalculator extends Component {
 				</div>
 				
 				<div class="calculator-header-bot">
-					<div id="step-desc">${stepDescription[currentStep]}</div>
+					<div id="step-desc">${stepsData[currentStep].desc}</div>
 					
 					<div class="steps-navigation">
 						<button type="button" class="step-btn" id="btn-back"
