@@ -5,7 +5,7 @@ const routes = {
 	"/": { title: "Home", render: Home },
 	"/loan-calculator": { title: "Loan Calculator", component: LoanCalculator },
 
-	"404": { title: "404", render: () => "<h1>Page Not Found</h1>" },
+	404: { title: "404", render: () => "<h1>Page Not Found</h1>" },
 };
 
 let activeComponentInstance = null;

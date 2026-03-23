@@ -1,4 +1,4 @@
-import { Component } from '../../core/Component.js';
+import { Component } from "../../core/Component.js";
 
 export class Step2 extends Component {
 	render() {

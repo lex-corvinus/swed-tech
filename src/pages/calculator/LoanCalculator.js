@@ -4,15 +4,15 @@ import { Step3 } from "./Step3.js";
 import { Step4 } from "./Step4.js";
 import { Step5 } from "./Step5.js";
 
-import {Component} from "../../core/Component.js";
-import {storage} from "../../utils/storage.js";
+import { Component } from "../../core/Component.js";
+import { storage } from "../../utils/storage.js";
 
 const stepComponents = {
 	1: Step1,
 	2: Step2,
 	3: Step3,
 	4: Step4,
-	5: Step5
+	5: Step5,
 };
 
 const stepsData = {
@@ -20,7 +20,7 @@ const stepsData = {
 	2: { title: "Step 2: Loan Calculator", desc: "Step2 desc" },
 	3: { title: "Step 3: Consents", desc: "Step3 desc" },
 	4: { title: "Step 4: Additional Info", desc: "Step4 desc" },
-	5: { title: "Summary:", desc: "Step5 desc" }
+	5: { title: "Summary:", desc: "Step5 desc" },
 };
 
 export class LoanCalculator extends Component {
@@ -30,7 +30,7 @@ export class LoanCalculator extends Component {
 		super(containerElement, {
 			currentStep: 1,
 			totalSteps: 5,
-			formData: savedState.formData
+			formData: savedState.formData,
 		});
 
 		this.activeStepInstance = null;
@@ -40,13 +40,13 @@ export class LoanCalculator extends Component {
 	persist() {
 		storage.save({
 			currentStep: this.state.currentStep,
-			formData: this.state.formData
+			formData: this.state.formData,
 		});
 	}
 
 	updateGlobalData(newData) {
 		this.setState({
-			formData: { ...this.state.formData, ...newData }
+			formData: { ...this.state.formData, ...newData },
 		});
 		this.persist();
 	}
@@ -56,42 +56,48 @@ export class LoanCalculator extends Component {
 		const { currentStep, totalSteps } = this.state;
 
 		if (currentStep === totalSteps) {
-			return 'icon-completed';
+			return "icon-completed";
 		}
 
 		if (stepIndex < currentStep) {
-			return 'icon-completed';
+			return "icon-completed";
 		} else if (stepIndex === currentStep) {
-			return 'icon-active';
+			return "icon-active";
 		} else {
-			return 'icon-inactive';
+			return "icon-inactive";
 		}
 	}
 
 	bindEvents() {
 		super.bindEvents();
 
-		const stepSlot = this.container.querySelector('#step-container');
+		const stepSlot = this.container.querySelector("#step-container");
 		const StepClass = stepComponents[this.state.currentStep];
 
-		if (StepClass && stepSlot) {
-			if (this.activeStepInstance) this.activeStepInstance.destroy();
+		if (this.activeStepInstance) this.activeStepInstance.destroy();
 
-			this.activeStepInstance = new StepClass(stepSlot, this.state.formData);
-			this.activeStepInstance.updateDOM();
-		}
+		// passing wrapped props: state as data & updateGlobalData as onUpdate -> to child
+		this.activeStepInstance = new StepClass(stepSlot, {
+			data: this.state.formData,
+			onUpdate: (newData) => this.updateGlobalData(newData),
+		});
+
+		this.activeStepInstance.updateDOM();
 	}
 
 	handleEvents(e) {
-		const target = e.target.closest('button');
+		const target = e.target.closest("button");
 		if (!target) return;
 
-		if (target.id === 'btn-next' && this.state.currentStep < this.state.totalSteps) {
+		if (
+			target.id === "btn-next" &&
+			this.state.currentStep < this.state.totalSteps
+		) {
 			this.setState({ currentStep: this.state.currentStep + 1 });
 			this.persist();
 		}
 
-		if (target.id === 'btn-back' && this.state.currentStep > 1) {
+		if (target.id === "btn-back" && this.state.currentStep > 1) {
 			this.setState({ currentStep: this.state.currentStep - 1 });
 			this.persist();
 		}
@@ -121,13 +127,13 @@ export class LoanCalculator extends Component {
 					
 					<div class="steps-navigation">
 						<button type="button" class="step-btn" id="btn-back"
-						${isFirstStep ? 'disabled' : ''}>
+						${isFirstStep ? "disabled" : ""}>
 						
 							<span class="triangle-left"></span> BACK
 						</button>
 						
 						<button type="button" class="step-btn" id="btn-next"
-						${ (currentStep === totalSteps) ? 'disabled' : ''}>
+						${currentStep === totalSteps ? "disabled" : ""}>
 						
 							<span class="triangle-right"></span> NEXT
 						</button>

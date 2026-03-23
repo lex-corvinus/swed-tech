@@ -1,13 +1,28 @@
-import { Component } from '../../core/Component.js';
+import { Component } from "../../core/Component.js";
 
 export class Step4 extends Component {
-	render() {
-		return `
-            <div class="step-content">
-                <h3>Step 4 SLOT</h3>
-            </div>
-        `;
+	handleEvents(e) {
+		if (e.target.id === "additional-info") {
+			this.state.onUpdate({
+				additionalInfo: e.target.value,
+			});
+		}
 	}
 
-	// Step-specific logic
+	render() {
+		const { additionalInfo } = this.state.data;
+
+		return `
+        <div id="step4" class="form-step">
+            <div class="input-group">
+                <label for="additional-info">Additional info:</label>
+                
+                <textarea 
+                    id="additional-info" 
+                    placeholder="Type your message here..."
+                >${additionalInfo || ""}</textarea>
+            </div>
+        </div>
+        `;
+	}
 }
