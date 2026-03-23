@@ -1,15 +1,16 @@
 import { Header, initHeader } from './partials/Header.js';
 import { Footer } from './partials/Footer.js';
 
-import {initRouter} from "./router";
+import { initRouter } from "./core/router.js";
 
 import "./styles/calculator.css";
 import "./styles/header.css";
 import "./styles/home.css";
+import "./styles/steps.css";
 
 const initLayout = () => {
-    const headerContainer = document.querySelector('header');
-    const footerContainer = document.querySelector('footer');
+	const headerContainer = document.querySelector("header");
+	const footerContainer = document.querySelector("footer");
 
     headerContainer.innerHTML = Header();
     footerContainer.innerHTML = Footer();
