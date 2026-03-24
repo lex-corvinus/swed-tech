@@ -50,13 +50,17 @@ export const formHelpers = {
 		const onInputChange = () => {
 			if (!input) return;
 			const value = parseInt(input.value);
-			if (isNaN(value) || input.value === "") return;
+			
+			if (isNaN(value) || input.value === "") {
+			    callback(value);
+			    return;
+			}
 
 			if (value >= min && value <= max) {
 				slider.value = value;
 				updateBubble(value);
-				callback(value);
 			}
+			callback(value);
 		};
 
 		slider.addEventListener("input", onSliderChange);

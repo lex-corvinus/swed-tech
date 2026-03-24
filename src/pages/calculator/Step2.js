@@ -46,13 +46,21 @@ export class Step2 extends Component {
 
 	updateCalculations() {
 		const slider = this.container.querySelector("#loan-slider");
+		const numInput = this.container.querySelector("#loan-input");
 		const periodEl = this.container.querySelector("#period-dropdown");
 		const incomeEl = this.container.querySelector("#income-dropdown");
 		const interestEl = this.container.querySelector("#interest-dropdown");
 
-		if (!slider || !periodEl || !incomeEl || !interestEl) return;
+		if (!slider || !numInput || !periodEl || !incomeEl || !interestEl) return;
 
-		const amount = parseInt(slider.value);
+		const amount = parseInt(numInput.value);
+
+		if (Number.isNaN(amount) || amount < SLIDER.MIN || amount > SLIDER.MAX) {
+			numInput.style.borderColor = "red";
+		} else {
+			numInput.style.borderColor = "var(--text-main)";
+		}
+
 		const period = parseInt(periodEl.value);
 		const incomeKey = incomeEl.value;
 		const rate = parseFloat(interestEl.value);

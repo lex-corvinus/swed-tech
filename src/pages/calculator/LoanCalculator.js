@@ -51,6 +51,34 @@ export class LoanCalculator extends Component {
 			formData: { ...this.state.formData, ...newData },
 		};
 		this.persist();
+		
+		const nextBtn = this.container.querySelector("#btn-next");
+		if (nextBtn) {
+			nextBtn.disabled = !this.isStepValid() || this.state.currentStep === this.state.totalSteps;
+		}
+	}
+
+	isStepValid() {
+		const { currentStep, formData } = this.state;
+		
+		if (currentStep === 1) {
+			return !!formData.employment && formData.employment.trim() !== "";
+		}
+		
+		if (currentStep === 2) {
+		    const amount = formData.amount;
+		    return amount >= 300 && amount <= 20000;
+		}
+		
+		if (currentStep === 3) {
+			return formData.consents && formData.consents.terms === true && formData.consents.privacy === true;
+		}
+		
+		if (currentStep === 4) {
+			return !formData.additionalInfo || formData.additionalInfo.length <= 1000;
+		}
+		
+		return true;
 	}
 
 	getIndicatorClass(stepIndex) {
@@ -127,7 +155,7 @@ export class LoanCalculator extends Component {
 					   </button>
 					   
 					   <button type="button" class="step-btn" id="btn-next"
-					   ${currentStep === totalSteps ? "disabled" : ""}>
+					   ${(currentStep === totalSteps || !this.isStepValid()) ? "disabled" : ""}>
 						  <span class="triangle-right"></span> ${t('calc_btn_next')}
 					   </button>
 					</div>
