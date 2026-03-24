@@ -82,7 +82,8 @@ export function calculateLoan(principal, annualRate, months) {
 	};
 }
 
-export function getAffordabilityWarning(monthly, income) {
+// t this is translated for i18
+export function getAffordabilityWarning(monthly, income, t) {
 	const monthlyC = toCents(monthly); // monthly cents
 	const incomeC = toCents(income); // income cents
 
@@ -96,20 +97,20 @@ export function getAffordabilityWarning(monthly, income) {
 		return {
 			level: "danger",
 			pct,
-			message: `Warning: payment is ${pct}% of income — loan may be rejected.`,
+			message: t("step2_warning_danger").replace("{pct}", pct),
 		};
 
 	if (pct > AFFORDABILITY.SOFT_LIMIT)
 		return {
 			level: "caution",
 			pct,
-			message: `Caution: payment is ${pct}% of income — approaching the limit.`,
+			message: t("step2_warning_caution").replace("{pct}", pct),
 		};
 
 	return {
 		level: "ok",
 		pct,
-		message: `Your financial status looks good.`,
+		message: t("step2_warning_ok"),
 	};
 }
 

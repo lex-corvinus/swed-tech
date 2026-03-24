@@ -1,13 +1,13 @@
-import {Component} from "../../../core/Component.js";
+import { Component } from "../../../core/Component.js";
+import { t } from "../../../core/i18n.js";
 
 export class SubmitBtn extends Component {
-
-    render() {
-        return `
+	render() {
+		return `
 
         <button type="button" class="submit-apl-btn" onclick="alert('This is a mockup. No data was submitted.')">
-            SUBMIT
+            ${t("btn_submit")}
         </button>
         `;
-    };
+	}
 }

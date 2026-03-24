@@ -6,7 +6,7 @@
 
     display: grid;
 
-    grid-template-columns: minmax(1rem, 1fr) 75rem minmax(1rem, 1fr);
+    grid-template-columns: minmax(1rem, 1fr) min(calc(100% - 2rem), 75rem) minmax(1rem, 1fr);
     grid-template-rows: 1fr;
 
     /* Width: fill */
@@ -15,7 +15,6 @@
     height: auto;
 
     align-items: center;
-    min-width: 100vh;
 }
 .footer-wrapper > * {
     grid-column: 2;
@@ -59,4 +58,10 @@
 
     padding-top: 2rem;
     padding-bottom: 2rem;
+}
+
+@media (max-width: 40rem) {
+    .footer-content {
+        flex-direction: column;
+    }
 }

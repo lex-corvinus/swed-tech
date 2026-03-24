@@ -2,14 +2,23 @@ import CautionIcon from "../../assets/caution-smile.svg";
 import DangerIcon from "../../assets/danger-smile.svg";
 import OkayIcon from "../../assets/ok-smile.svg";
 
-import {INCOME_MAP, INTEREST_RATE, PERIOD_TIME, SLIDER, SWEDBANK_SMALL_LOAN,
+import {
+	INCOME_MAP,
+	INTEREST_RATE,
+	PERIOD_TIME,
+	SLIDER,
+	SWEDBANK_SMALL_LOAN,
 } from "../../utils/config.js";
 
 import { formHelpers } from "../../utils/formHelpers.js";
-import {calculateContractFee, calculateLoan, getAffordabilityWarning} from "../../utils/loanCalculation.js";
+import {
+	calculateContractFee,
+	calculateLoan,
+	getAffordabilityWarning,
+} from "../../utils/loanCalculation.js";
 
 import { Component } from "../../core/Component.js";
-import {t} from "../../core/i18n.js";
+import { t } from "../../core/i18n.js";
 
 export class Step2 extends Component {
 	bindEvents() {
@@ -55,9 +64,9 @@ export class Step2 extends Component {
 		);
 		const contractFee = calculateContractFee(amount, SWEDBANK_SMALL_LOAN);
 		const totalRepaid = baseTotalRepaid + contractFee;
-		const warning = getAffordabilityWarning(monthly, INCOME_MAP[incomeKey]);
+		const warning = getAffordabilityWarning(monthly, INCOME_MAP[incomeKey], t);
 
-        const formatLocale = 'et-EE';
+		const formatLocale = "et-EE";
 
 		const formattedMonthly = monthly.toLocaleString(formatLocale, {
 			minimumFractionDigits: 2,
@@ -113,7 +122,7 @@ export class Step2 extends Component {
         <div id="step2" class="form-step">
         
           <div class="loan-calculator">
-            <h2>${t('step2_title')}</h2>
+            <h2>${t("step2_title")}</h2>
             
             <hr class="calculator-divider">
 
@@ -121,7 +130,7 @@ export class Step2 extends Component {
             
               <div class="grid-left">
                 <div class="input-group">
-                  <label>${t('step2_label_amount')}</label>
+                  <label>${t("step2_label_amount")}</label>
                   <div class="range-container">
                     <div class="input-wrapper">
                       <input type="number" class="loan-input" id="loan-input" value="${amount}">
@@ -139,7 +148,7 @@ export class Step2 extends Component {
                       
                         <div class="affordability-warning" id="affordability-warning" data-level="ok">
                         
-                          <span id="warning-text">${t('step2_warning_calculating')}</span>
+                          <span id="warning-text">${t("step2_warning_calculating")}</span>
                           
                           <div class="icon-wrapper">
                             <img class="status-icon icon-ok" src="${OkayIcon}" alt="ok">
@@ -158,9 +167,9 @@ export class Step2 extends Component {
                   <label>Your income:</label>
                   <div class="select-wrapper">
 										<select id="income-dropdown">
-											<option value="low" ${income === `${INCOME_MAP.low}` ? "selected" : ""}>${t('step2_income_low')}</option>
-											<option value="medium" ${income === `${INCOME_MAP.medium}` ? "selected" : ""}>${t('step2_income_medium')}</option>
-											<option value="high" ${income === `${INCOME_MAP.high}` ? "selected" : ""}>${t('step2_income_high')}</option>
+											<option value="low" ${income === `${INCOME_MAP.low}` ? "selected" : ""}>${t("step2_income_low")}</option>
+											<option value="medium" ${income === `${INCOME_MAP.medium}` ? "selected" : ""}>${t("step2_income_medium")}</option>
+											<option value="high" ${income === `${INCOME_MAP.high}` ? "selected" : ""}>${t("step2_income_high")}</option>
 										</select>
                   </div>
                 </div>
@@ -169,15 +178,15 @@ export class Step2 extends Component {
                   <label>Loan period:</label>
                   <div class="select-wrapper">
                     <select id="period-dropdown">
-                    <option value="${PERIOD_TIME.SHORT}"  ${period === PERIOD_TIME.SHORT ? "selected" : ""}>${PERIOD_TIME.SHORT} ${t('step2_months')}</option>
-                    <option value="${PERIOD_TIME.MEDIUM}" ${period === PERIOD_TIME.MEDIUM ? "selected" : ""}>${PERIOD_TIME.MEDIUM} ${t('step2_months')}</option>
-                    <option value="${PERIOD_TIME.LONG}"   ${period === PERIOD_TIME.LONG ? "selected" : ""}>${PERIOD_TIME.LONG} ${t('step2_months')}</option>
+                    <option value="${PERIOD_TIME.SHORT}"  ${period === PERIOD_TIME.SHORT ? "selected" : ""}>${PERIOD_TIME.SHORT} ${t("step2_months")}</option>
+                    <option value="${PERIOD_TIME.MEDIUM}" ${period === PERIOD_TIME.MEDIUM ? "selected" : ""}>${PERIOD_TIME.MEDIUM} ${t("step2_months")}</option>
+                    <option value="${PERIOD_TIME.LONG}"   ${period === PERIOD_TIME.LONG ? "selected" : ""}>${PERIOD_TIME.LONG} ${t("step2_months")}</option>
                     </select>
                   </div>
                 </div>
 
                 <div class="input-group">
-                  <label>${t('step2_label_interest')}</label>
+                  <label>${t("step2_label_interest")}</label>
                   <div class="select-wrapper">
                     <select id="interest-dropdown">
                         <option value="${INTEREST_RATE.LOW}" ${interestRate === INTEREST_RATE.LOW ? "selected" : ""}>9.9%</option>
@@ -194,18 +203,18 @@ export class Step2 extends Component {
             <div class="result-section">
             
                <div class="result-col-left">
-                   <h2>${t('step2_monthly_payment')}</h2>
+                   <h2>${t("step2_monthly_payment")}</h2>
                    <div class="period-info-container">
-						<span class="period-info-label">${t('step2_period_label')}</span>
+						<span class="period-info-label">${t("step2_period_label")}</span>
 						<div class="period-info-box">
-							<span id="period-badge">${period}</span>${t('step2_months')}
+							<span id="period-badge">${period}</span>${t("step2_months")}
 						</div>
 					</div>
                </div>
                
                <div class="result-col-mid">
 				   <div class="result-info-container">
-				       <span class="result-info-label">${t('step2_service_fee')}</span>
+				       <span class="result-info-label">${t("step2_service_fee")}</span>
 				       
 					   <div class="result-info-box">
 					   		<span id="contract-fee-display"></span> €
@@ -213,7 +222,7 @@ export class Step2 extends Component {
 				   </div>
 			   
 				   <div class="result-info-container">
-					   <span class="result-info-label">${t('step2_total_repayment')}</span>
+					   <span class="result-info-label">${t("step2_total_repayment")}</span>
 					   
 					   <div class="result-info-box">
 					   		<span id="total-repayment-display"></span> €
@@ -224,6 +233,7 @@ export class Step2 extends Component {
                <div class="result-container-right">
                    <div class="final-price">
                        <span id="monthly-payment-result">${monthlyPaymentResult}</span>
+                       <span id="monthly-payment-text">${t("calc_monthly_result")}</span>
                    </div>
                </div>
             </div>
