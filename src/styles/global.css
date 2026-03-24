@@ -11,6 +11,7 @@
 :root {
     /* ACCENT/ACTION */
     --primary-active: #FF5F00;
+    --primary-active-shadow: #b84000;
     --primary-inactive: #FFBF99;
 
     --secondary-active: #FDC92A;
@@ -24,6 +25,7 @@
     --text-hover: #512B2B08;
 
     /* BACKGROUND */
+    --bg-inner-box: #F1EEEE;
     --bg-inner: #ffffff;
     --bg-outer: #FDF6EE;
     --bg-alternative: #FEECE0;
@@ -43,6 +45,7 @@
 
 [data-theme="dark"] {
     --primary-active: #FB4F00;
+    --primary-active-shadow: #FF5F00;
     --primary-inactive: #FFBF99;
 
     --secondary-active: #FDC92A;
@@ -56,11 +59,11 @@
     --text-hover: #512B2B08;
 
     /* [DARK] BACKGROUND */
+    --bg-inner-box: #1B1B1B;
     --bg-inner: #2E2E2E;
     --bg-outer: #121212;
     --bg-alternative: #FEECE0;
     --bg-alternative2: #FFE4C5;
-    --bg-label: #F1EEEE;
 
     /* [DARK] STEPS */
     --steps-outer: #4C4947;
