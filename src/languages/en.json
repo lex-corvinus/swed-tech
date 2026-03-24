@@ -1,10 +1,13 @@
 {
+  "not_a_bank":  "NOT A REAL BANK!",
+  "inquiries":  "Inquiries:",
+
   "header_contacts": "Contact",
   "header_search": "Search",
 
   "header_nav_home": "Home",
   "header_nav_calculator": " Loan Calculator",
-  "header_nav_extra": "Extras",
+  "header_nav_extras": "Extras",
 
   "step_what": "What",
   "step_when": "When",
@@ -90,5 +93,7 @@
   "step5_label_fee_inc": "Service fee included",
   "step5_currency": "EUR",
   "step5_extra_info": "EXTRA INFO",
-  "step5_not_available": "N/A"
+  "step5_not_available": "N/A",
+
+  "footer_legal": "Legal Disclaimer: This application is a functional prototype created for educational and demonstration purposes only. It is not a licensed financial institution and does not provide real banking services. Any data entered is for simulation only and is not processed for actual financial transactions."
 }

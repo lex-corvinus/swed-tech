@@ -142,6 +142,9 @@
 .slider-validation {
 	color: red;
 }
+.warning-notice {
+	color: var(--text-main);
+}
 
 /* Slider warning */
 .affordability-warning[data-level="ok"] .icon-ok {

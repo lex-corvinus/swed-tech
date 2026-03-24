@@ -1,10 +1,13 @@
 {
+  "not_a_bank":  "TEGEMIST EI OLE PANGAGA!",
+  "inquiries":  "Päringud:",
+
   "header_contacts": "Kontakt",
   "header_search": "Otsing",
 
   "header_nav_home": "Avaleht",
   "header_nav_calculator": "Laenukalkulaator",
-  "header_nav_extra": "Lisad",
+  "header_nav_extras": "Lisad",
 
   "step_what": "Mis",
   "step_when": "Millal",
@@ -90,5 +93,7 @@
   "step5_label_fee_inc": "Lepingutasu hinnas",
   "step5_currency": "EUR",
   "step5_extra_info": "TÄIENDAV INFO",
-  "step5_not_available": "PUDUB"
+  "step5_not_available": "PUDUB",
+
+  "footer_legal": "Õiguslik teave: See rakendus on loodud õppe- ja demonstreerimise eesmärgil ning on vaid funktsionaalne prototüüp. Tegemist ei ole litsentseeritud finantsasutusega ning rakendus ei paku reaalseid pangateenuseid. Kõik sisestatud andmed on mõeldud ainult simulatsiooniks ning neid ei kasutata tegelikeks finantstehinguteks."
 }

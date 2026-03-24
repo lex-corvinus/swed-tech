@@ -3,8 +3,11 @@ import homeSvg from '../assets/home.svg?raw';
 import sun from '../assets/sun.svg?raw';
 import moon from '../assets/moon.svg?raw';
 import {t} from "../core/i18n.js";
+import {settingsStorage} from "../core/storage.js";
 
 export const Header = () => {
+
+    const currentLang = settingsStorage.getLanguage();
 
     return `
     <div class="header-wrapper">
@@ -14,7 +17,7 @@ export const Header = () => {
             <!--      TOP ROW      -->
             <div class="header-row-top">
                 <div class="language-dropdown">
-                    <button id="lang-toggle">ENG ▼</button>
+                    <button id="lang-toggle">${currentLang}▼</button>
                     <div class="language-dropdown-options" id="lang-menu">
                         <span data-lang="en">ENG</span>
                         <span data-lang="ee">EST</span>
@@ -46,9 +49,9 @@ export const Header = () => {
                   <div class="contacts-dropdown desktop-only">
                       <span>${t('header_contacts')}</span>
                       <div class="contacts-dropdown-options" >
-                          <span>SOME COOL</span>
-                          <span>INFO WILL</span>
-                          <span>BE HERE</span>
+                          <span>${t('not_a_bank')}</span>
+                          <span>${t('inquiries')}</span>
+                          <span>aleksei.kuroljov@gmail.com</span>
                       </div>
                   </div>
 
@@ -71,8 +74,8 @@ export const Header = () => {
                 </div>
                 
                     <nav class="navbar">
-                        <a href="#/loan-calculator" data-link>Loan Calculator</a>
-                        <a href="#/extra" data-link>Extra</a>
+                        <a href="#/loan-calculator" data-link>${t('header_nav_calculator')}</a>
+                        <a href="#/extras" data-link>${t('header_nav_extras')}</a>
                     </nav>
                     
                 <div class="right-item">${t('header_search')}</div>
@@ -82,7 +85,7 @@ export const Header = () => {
             <nav id="mobile-nav" class="mobile-nav-menu" aria-label="Mobile navigation">
                 <a href="#/" data-link class="mobile-link">${t('header_nav_home')}</a>
                 <a href="#/loan-calculator" data-link class="mobile-link">${t('header_nav_calculator')}</a>
-                <a href="#/extra" data-link class="mobile-link">${t('header_nav_extra')}</a>
+                <a href="#/extras" data-link class="mobile-link">${t('header_nav_extra')}</a>
                 <a href="https://www.swedbank.ee/" target="_blank" rel="noopener noreferrer" class="mobile-link">Real Deal</a>
             </nav>
         </div>

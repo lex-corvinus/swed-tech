@@ -10,6 +10,7 @@ import "./styles/header.css";
 import "./styles/footer.css";
 import "./styles/home.css";
 import "./styles/steps.css";
+import "./styles/extras.css";
 
 const initLayout = () => {
 	const headerContainer = document.querySelector("header");

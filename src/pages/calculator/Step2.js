@@ -139,7 +139,7 @@ export class Step2 extends Component {
                       
                         <div class="affordability-warning" id="affordability-warning" data-level="ok">
                         
-                          <span id="warning-text">${t('step2_warning_calculating')}</span>
+                          <span class="warning-notice" id="warning-text">${t('step2_warning_calculating')}</span>
                           
                           <div class="icon-wrapper">
                             <img class="status-icon icon-ok" src="${OkayIcon}" alt="ok">

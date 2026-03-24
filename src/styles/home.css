@@ -89,6 +89,7 @@ html {
 	background-color: var(--bg-inner-box);
 	border-radius: 1rem;
 	font-size: 1rem;
+	margin: 0 2rem 0 0;
 }
 
 .what-list-of-items li {
@@ -98,7 +99,6 @@ html {
 }
 
 /* lower right main content  */
-
 .lower-right-box {
 	background-color: #f1eeee;
 	border-radius: 1rem;
@@ -222,6 +222,20 @@ html {
 	padding-top: 1rem;
 }
 
+.home-bottom {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+}
+.arrow-div{
+	display: flex;
+	justify-content: space-evenly;
+}
+.custom-arrow {
+	width: 8rem;
+	height: 8rem;
+
+	color: var(--text-alternative);
+}
 
 /* Mobile */
 
