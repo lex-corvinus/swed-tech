@@ -443,7 +443,7 @@ input[type="range"]::-webkit-slider-thumb {
 }
 
 #monthly-payment-text {
-	color: var(--text-main-alt);
+	color: var(--text-main);
 	display: block;
 	font-size: 1.5rem;
 	font-weight: 800;
@@ -487,7 +487,13 @@ input[type="range"]::-webkit-slider-thumb {
 	gap: 1rem;
 	margin-top: 20px;
 }
-
+#consent-privacy:focus-visible,
+#consent-marketing:focus-visible,
+#consent-terms:focus-visible {
+	outline: 2px solid var(--secondary-active);
+	outline-offset: 2px;
+	border-color: var(--secondary-active);
+}
 .check-item {
 	display: flex;
 	flex-direction: row;
@@ -498,10 +504,10 @@ input[type="range"]::-webkit-slider-thumb {
 	font-weight: 700;
 	font-size: 1rem;
 }
-.terms-link{
-	color: var(--text-alternative)
+.terms-link {
+	color: var(--text-alternative);
 }
-.required-star{
+.required-star {
 	color: var(--primary-active);
 }
 
@@ -642,7 +648,7 @@ input[type="range"]::-webkit-slider-thumb {
 
 .submit-apl-btn {
 	background-color: var(--primary-active);
-	color: #FFFFFF;
+	color: #ffffff;
 
 	font-family: "Roboto", sans-serif;
 	font-size: 2rem;

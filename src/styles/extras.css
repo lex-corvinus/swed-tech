@@ -1,22 +1,22 @@
 .extras-title {
-    font-size: 2rem;
-    font-weight: bold;
-    color: var(--primary-active);
+	font-size: 2rem;
+	font-weight: bold;
+	color: var(--primary-active);
 }
 
 .extras-points {
-    font-size: 2rem;
-    font-weight: bold;
-    color: var(--primary-active);
+	font-size: 2rem;
+	font-weight: bold;
+	color: var(--primary-active);
 }
 
 .extras-list {
-    padding: 0;
+	padding: 0;
 }
 
 .extras-point {
-    color: var(--text-main);
+	color: var(--text-main);
 }
 .extras-link {
-    color: var(--text-alternative);
+	color: var(--text-alternative);
 }

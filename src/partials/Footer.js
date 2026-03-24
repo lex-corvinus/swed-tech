@@ -1,8 +1,7 @@
-import {t} from "../core/i18n.js";
+import { t } from "../core/i18n.js";
 
 export const Footer = () => {
-
-    return `
+	return `
     <div class="footer-wrapper">
     
         <div class="footer-content">
@@ -44,7 +43,7 @@ export const Footer = () => {
         </div>
         
         <div class="footer-legal">
-            ${t('footer_legal')}
+            ${t("footer_legal")}
         </div>
     </div>
     `;

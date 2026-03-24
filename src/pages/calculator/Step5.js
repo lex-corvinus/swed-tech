@@ -93,8 +93,8 @@ export class Step5 extends Component {
               
               <div class="summary-wrapper-mid">
               
-                  <div class="affordability-warning-summary  ${warningLevel}" data-level="${warningLevel}">
-                      <span>${warningMessage}</span>
+                  <div class="affordability-warning-summary ${warningLevel}" data-level="${warningLevel}">
+                      <span class="warning-notice">${warningMessage}</span>
                       <div class="icon-wrapper-summary">
                         <img class="status-icon-sum icon-ok" src="${OkayIcon}" alt="ok">
                         <img class="status-icon-sum icon-caution" src="${CautionIcon}"  alt="caution">
@@ -116,19 +116,19 @@ export class Step5 extends Component {
               </div>
               
                 <div class="summary-wrapper-bot">
-                <div class="result-container-right">
-                    <div class="final-price">
-
-                        <div class="montly-payment-container">
-							<span id="monthly-payment-result">${monthlyPaymentResult}</span>
-							<span>EUR</span>
+					<div class="result-container-right">
+						<div class="final-price">
+							<div>
+								<span id="monthly-payment-result">${monthlyPaymentResult}</span>
+								<span>EUR</span>
+							</div>
+							<span id="monthly-payment-text">${t("calc_monthly_result")}</span>
 						</div>
-						<span id="monthly-payment-text">${t("calc_monthly_result")}</span>
-                    </div>
-  
-                <div class="summary-bot-container">
-                    ${new SubmitBtn().render()}
-                </div>
+					</div>
+					
+					<div class="summary-bot-container">
+						${new SubmitBtn().render()}
+					</div>
               </div>
             </div>
         </div>

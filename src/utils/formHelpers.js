@@ -1,5 +1,4 @@
 export const formHelpers = {
-
 	getValue(element) {
 		return element ? element.value : null;
 	},
@@ -50,10 +49,10 @@ export const formHelpers = {
 		const onInputChange = () => {
 			if (!input) return;
 			const value = parseInt(input.value);
-			
+
 			if (isNaN(value) || input.value === "") {
-			    callback(value);
-			    return;
+				callback(value);
+				return;
 			}
 
 			if (value >= min && value <= max) {

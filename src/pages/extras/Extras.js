@@ -1,24 +1,13 @@
-import {Component} from "../../core/Component.js";
-import {t} from "../../core/i18n.js";
+import { Component } from "../../core/Component.js";
+import { t } from "../../core/i18n.js";
 
 export class Extras extends Component {
-
-    handleEvents(e) {
-        const link = e.target.closest(".extra-link");
-        if (link) {
-            e.preventDefault();
-            const targetId = link.dataset.id;
-            console.log(`Navigating to: ${targetId}`);
-            // Logic to change route or open modal goes here
-        }
-    }
-
-    render() {
-        return `
+	render() {
+		return `
             <div class="main-content-window">
             
                 <ul class="extras-list">
-                    <h2 class="extras-title">${t('header_nav_extras')}</h2>
+                    <h2 class="extras-title">${t("header_nav_extras")}</h2>
                     
                     <hr class="calculator-divider">
                     
@@ -33,5 +22,5 @@ export class Extras extends Component {
                 </ul>
             </div>
         `;
-    }
+	}
 }

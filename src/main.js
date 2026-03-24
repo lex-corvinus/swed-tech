@@ -1,9 +1,9 @@
-import { Header, initHeader } from './partials/Header.js';
-import { Footer } from './partials/Footer.js';
+import { Header, initHeader } from "./partials/Header.js";
+import { Footer } from "./partials/Footer.js";
 
 import { initRouter } from "./core/router.js";
-import {initI18n} from "./core/i18n.js";
-import {settingsStorage, THEMES, LANGUAGES} from "./core/storage.js";
+import { initI18n } from "./core/i18n.js";
+import { settingsStorage, THEMES, LANGUAGES } from "./core/storage.js";
 
 import "./styles/calculator.css";
 import "./styles/header.css";
@@ -16,40 +16,44 @@ const initLayout = () => {
 	const headerContainer = document.querySelector("header");
 	const footerContainer = document.querySelector("footer");
 
-    headerContainer.innerHTML = Header();
-    footerContainer.innerHTML = Footer();
+	headerContainer.innerHTML = Header();
+	footerContainer.innerHTML = Footer();
 
-    initHeader();
+	initHeader();
 };
 document.addEventListener("DOMContentLoaded", () => {
-    document.documentElement.setAttribute('data-theme', settingsStorage.getTheme());
+	document.documentElement.setAttribute(
+		"data-theme",
+		settingsStorage.getTheme(),
+	);
 
-    initI18n();
+	initI18n();
 
-    initLayout();
+	initLayout();
 
-    initRouter();
+	initRouter();
 
-    document.body.addEventListener("click", e => {
-        const themeBtn = e.target.closest("#theme-toggle");
+	document.body.addEventListener("click", (e) => {
+		const themeBtn = e.target.closest("#theme-toggle");
 
-        if (themeBtn) {
-            const currentTheme = document.documentElement.getAttribute('data-theme');
-            const newTheme = currentTheme === THEMES.DARK ? THEMES.LIGHT : THEMES.DARK;
+		if (themeBtn) {
+			const currentTheme = document.documentElement.getAttribute("data-theme");
+			const newTheme =
+				currentTheme === THEMES.DARK ? THEMES.LIGHT : THEMES.DARK;
 
-            document.documentElement.setAttribute('data-theme', newTheme);
-            settingsStorage.setTheme(newTheme);
-        }
+			document.documentElement.setAttribute("data-theme", newTheme);
+			settingsStorage.setTheme(newTheme);
+		}
 
-        const langBtn = e.target.closest("[data-lang]");
-        if (langBtn) {
-            const newLanguage = langBtn.getAttribute("data-lang");
+		const langBtn = e.target.closest("[data-lang]");
+		if (langBtn) {
+			const newLanguage = langBtn.getAttribute("data-lang");
 
-            if (Object.values(LANGUAGES).includes(newLanguage)) {
-                settingsStorage.setLanguage(newLanguage);
+			if (Object.values(LANGUAGES).includes(newLanguage)) {
+				settingsStorage.setLanguage(newLanguage);
 
-                window.location.reload();
-            }
-        }
-    });
+				window.location.reload();
+			}
+		}
+	});
 });

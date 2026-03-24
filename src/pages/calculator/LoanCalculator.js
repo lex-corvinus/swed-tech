@@ -6,7 +6,7 @@ import { Step5 } from "./Step5.js";
 
 import { Component } from "../../core/Component.js";
 import { storage } from "../../core/storage.js";
-import {t} from "../../core/i18n.js";
+import { t } from "../../core/i18n.js";
 
 const stepComponents = {
 	1: Step1,
@@ -51,33 +51,38 @@ export class LoanCalculator extends Component {
 			formData: { ...this.state.formData, ...newData },
 		};
 		this.persist();
-		
+
 		const nextBtn = this.container.querySelector("#btn-next");
 		if (nextBtn) {
-			nextBtn.disabled = !this.isStepValid() || this.state.currentStep === this.state.totalSteps;
+			nextBtn.disabled =
+				!this.isStepValid() || this.state.currentStep === this.state.totalSteps;
 		}
 	}
 
 	isStepValid() {
 		const { currentStep, formData } = this.state;
-		
+
 		if (currentStep === 1) {
 			return !!formData.employment && formData.employment.trim() !== "";
 		}
-		
+
 		if (currentStep === 2) {
-		    const amount = formData.amount;
-		    return amount >= 300 && amount <= 20000;
+			const amount = formData.amount;
+			return amount >= 300 && amount <= 20000;
 		}
-		
+
 		if (currentStep === 3) {
-			return formData.consents && formData.consents.terms === true && formData.consents.privacy === true;
+			return (
+				formData.consents &&
+				formData.consents.terms === true &&
+				formData.consents.privacy === true
+			);
 		}
-		
+
 		if (currentStep === 4) {
 			return !formData.additionalInfo || formData.additionalInfo.length <= 1000;
 		}
-		
+
 		return true;
 	}
 
@@ -111,7 +116,10 @@ export class LoanCalculator extends Component {
 		const target = e.target.closest("button");
 		if (!target) return;
 
-		if (target.id === "btn-next" && this.state.currentStep < this.state.totalSteps) {
+		if (
+			target.id === "btn-next" &&
+			this.state.currentStep < this.state.totalSteps
+		) {
 			this.setState({ currentStep: this.state.currentStep + 1 });
 			this.persist();
 		}
@@ -151,12 +159,12 @@ export class LoanCalculator extends Component {
 					<div class="steps-navigation">
 					   <button type="button" class="step-btn" id="btn-back"
 					   ${isFirstStep ? "disabled" : ""}>
-						  <span class="triangle-left"></span> ${t('calc_btn_back')}
+						  <span class="triangle-left"></span> ${t("calc_btn_back")}
 					   </button>
 					   
 					   <button type="button" class="step-btn" id="btn-next"
-					   ${(currentStep === totalSteps || !this.isStepValid()) ? "disabled" : ""}>
-						  <span class="triangle-right"></span> ${t('calc_btn_next')}
+					   ${currentStep === totalSteps || !this.isStepValid() ? "disabled" : ""}>
+						  <span class="triangle-right"></span> ${t("calc_btn_next")}
 					   </button>
 					</div>
 				 </div>

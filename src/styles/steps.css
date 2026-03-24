@@ -122,13 +122,14 @@
 }
 
 @media (max-width: 40rem) {
-	.calculator-header-top, .calculator-header-bot {
+	.calculator-header-top,
+	.calculator-header-bot {
 		flex-direction: column;
 		align-items: center;
 		text-align: center;
 		gap: 1rem;
 	}
-	
+
 	#step-desc {
 		padding-right: 0;
 	}

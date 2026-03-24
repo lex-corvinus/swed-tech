@@ -9,84 +9,84 @@
 @import "@fontsource/roboto-mono/700.css";
 
 :root {
-    /* ACCENT/ACTION */
-    --primary-active: #FF5F00;
-    --primary-active-shadow: #b84000;
-    --primary-inactive: #FFBF99;
+	/* ACCENT/ACTION */
+	--primary-active: #ff5f00;
+	--primary-active-shadow: #b84000;
+	--primary-inactive: #ffbf99;
 
-    --secondary-active: #FDC92A;
-    --secondary-inactive: #F1EEEE;
+	--secondary-active: #fdc92a;
+	--secondary-inactive: #f1eeee;
 
-    /* TEXTS */
-    --text-main: #512B2B;
-    --text-main-alt: #512B2B29;
-    --text-header: #FB4F00;
-    --text-alternative: #257886;
-    --text-hover: #512B2B08;
+	/* TEXTS */
+	--text-main: #512b2b;
+	--text-main-alt: #512b2b29;
+	--text-header: #fb4f00;
+	--text-alternative: #257886;
+	--text-hover: #512b2b08;
 
-    /* BACKGROUND */
-    --bg-inner-box: #F1EEEE;
-    --bg-inner: #ffffff;
-    --bg-outer: #FDF6EE;
-    --bg-alternative: #C5569A;
-    /*--bg-alternative2: #;*/
+	/* BACKGROUND */
+	--bg-inner-box: #f1eeee;
+	--bg-inner: #ffffff;
+	--bg-outer: #fdf6ee;
+	--bg-alternative: #c5569a;
+	/*--bg-alternative2: #;*/
 
-    /* STEPS UI */
-    --steps-outer: #FFE4C5;
+	/* STEPS UI */
+	--steps-outer: #ffe4c5;
 
-    --steps-text-active: #FFFFFF;
-    --steps-text-inactive: #FFFFFF;
-    --steps-text-completed: #FFFFFF;
+	--steps-text-active: #ffffff;
+	--steps-text-inactive: #ffffff;
+	--steps-text-completed: #ffffff;
 
-    --steps-completed: #FF5F00;
-    --steps-active: #FDC92A;
-    --steps-inactive: #b58b76;
+	--steps-completed: #ff5f00;
+	--steps-active: #fdc92a;
+	--steps-inactive: #b58b76;
 
-    /* EXTRA UI */
-    --ui-extra: #DBF8ED;
-    --ui-extra1: #31A3AE;
-    --ui-extra2: #257886;
-    --ui-extra4: #FF5F00;
+	/* EXTRA UI */
+	--ui-extra: #dbf8ed;
+	--ui-extra1: #31a3ae;
+	--ui-extra2: #257886;
+	--ui-extra4: #ff5f00;
 }
 
 [data-theme="dark"] {
-    --primary-active: #FB4F00;
-    --primary-active-shadow: #cf4000;
-    --primary-inactive: #FFBF99;
+	--primary-active: #fb4f00;
+	--primary-active-shadow: #cf4000;
+	--primary-inactive: #ffbf99;
 
-    --secondary-active: #FDC92A;
-    --secondary-inactive: #F1EEEE;
+	--secondary-active: #fdc92a;
+	--secondary-inactive: #f1eeee;
 
-    /* [DARK] TEXTS */
-    --text-main: #d3cecd;
-    --text-main-alt: #F2EDEB29;
-    --text-header: #FB4F00;
-    --text-alternative: #257886;
-    --text-hover: #512B2B08;
+	/* [DARK] TEXTS */
+	--text-main: #d3cecd;
+	--text-main-alt: #f2edeb29;
+	--text-header: #fb4f00;
+	--text-alternative: #257886;
+	--text-hover: #512b2b08;
 
-    /* [DARK] BACKGROUND */
-    --bg-inner-box: #121212;
-    --bg-inner: #2E2E2E;
-    --bg-outer: #121212;
-    --bg-alternative: #525252;
-    /*--bg-alternative2: #;*/
+	/* [DARK] BACKGROUND */
+	--bg-inner-box: #121212;
+	--bg-inner: #2e2e2e;
+	--bg-outer: #121212;
+	--bg-alternative: #525252;
+	/*--bg-alternative2: #;*/
 
-    /* [DARK] STEPS */
-    --steps-outer: #4C4947;
+	/* [DARK] STEPS */
+	--steps-outer: #4c4947;
 
-    --steps-text-active: #6A5C54;
-    --steps-text-inactive: #6A5C54;
-    --steps-text-completed: #FFFFFF;
+	--steps-text-active: #6a5c54;
+	--steps-text-inactive: #6a5c54;
+	--steps-text-completed: #ffffff;
 
-    --steps-completed: #FB4F00;
-    --steps-active: #FDC92A;
-    --steps-inactive: #121212;
+	--steps-completed: #fb4f00;
+	--steps-active: #fdc92a;
+	--steps-inactive: #121212;
 
-    /* [DARK] EXTRA UI */
-    --ui-extra: #257886;
-    --ui-extra1: #085663;
-    --ui-extra2: #0B3E47;
-    --ui-extra4: #FFFFFF;
+	/* [DARK] EXTRA UI */
+	--ui-extra: #257886;
+	--ui-extra1: #085663;
+	--ui-extra2: #0b3e47;
+	--ui-extra4: #ffffff;
 }
 
 /* DEFAULT OVERRIDE */
@@ -99,8 +99,8 @@ body {
 
 	font-family: "Roboto", sans-serif;
 
-    margin: 0;
-    overflow-x: hidden;
+	margin: 0;
+	overflow-x: hidden;
 
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
@@ -131,7 +131,10 @@ body {
 /*MAIN OUTLET WRAPPER*/
 .outlet-wrapper {
 	display: grid;
-    grid-template-columns: minmax(1rem, 1fr) min(calc(100% - 2rem), 75rem) minmax(1rem, 1fr);
+	grid-template-columns: minmax(1rem, 1fr) min(calc(100% - 2rem), 75rem) minmax(
+			1rem,
+			1fr
+		);
 	grid-template-rows: 1fr;
 
 	width: 100%;
