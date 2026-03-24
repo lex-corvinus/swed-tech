@@ -47,3 +47,43 @@ export const storage = {
 		localStorage.removeItem(STORAGE_KEY);
 	},
 };
+
+export const THEMES = {
+	LIGHT: 'light',
+	DARK: 'dark'
+};
+
+export const LANGUAGES = {
+	EN: 'en',
+	EE: 'ee',
+	RU: 'ru'
+};
+
+const SETTINGS_KEY = "app_settings";
+
+export const settingsStorage = {
+
+	getTheme() {
+		const savedTheme = localStorage.getItem('theme');
+		return Object.values(THEMES).includes(savedTheme) ? savedTheme : THEMES.LIGHT;
+	},
+	setTheme(theme) {
+		if (Object.values(THEMES).includes(theme)) {
+			localStorage.setItem('theme', theme);
+		} else {
+			console.error(`Invalid theme: ${theme}`);
+		}
+	},
+
+	getLanguage() {
+		const savedLanguage = localStorage.getItem('lang');
+		return Object.values(LANGUAGES).includes(savedLanguage) ? savedLanguage : LANGUAGES.EN;
+	},
+	setLanguage(lang) {
+		if (Object.values(LANGUAGES).includes(lang)) {
+			localStorage.setItem('lang', lang);
+		} else {
+			console.error(`Invalid language: ${lang}`);
+		}
+	}
+};

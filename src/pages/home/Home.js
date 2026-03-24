@@ -1,6 +1,7 @@
 import photoWhat from '../../assets/loan_picture.jpg';
 import photoWhen from '../../assets/koodJohvi_002.jpg';
 import photoWhy from '../../assets/group_photo.jpg';
+import {t} from "../../core/i18n.js";
 
 export const Home = () => {
 
@@ -21,7 +22,8 @@ export const Home = () => {
             <div class="what-lower-left-box">
                 
                 <div class="side-panel"> 
-                  <span class="primary-text">Junior Front-End Developer Assignment</span>
+<!-- Junior Front-End Developer Assignment -->
+                  <span class="primary-text">${t('home_test')}</span>
                   <span class="description-from-type-label">Technical Challenge by Swedbank</span>
                   </div>
                 
