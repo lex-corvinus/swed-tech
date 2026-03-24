@@ -6,15 +6,15 @@ import {t} from "../../core/i18n.js";
 export const Home = () => {
 
     return `
-<!--  What  -->
+    <!-- WHAT -->
     <div class="home-content-window">
         
         <div class="upper-main-content-window">
-          <span class="step active">What</span>
+          <span class="step active">${t('step_what')}</span>
           <span class="dot"></span>
-          <span class="step">When</span>
+          <span class="step">${t('step_when')}</span>
           <span class="dot"></span>
-          <span class="step">Why</span>
+          <span class="step">${t('step_why')}</span>
         </div>
         
         <div class="what-lower-main-content-window">
@@ -22,18 +22,17 @@ export const Home = () => {
             <div class="what-lower-left-box">
                 
                 <div class="side-panel"> 
-<!-- Junior Front-End Developer Assignment -->
                   <span class="primary-text">${t('home_test')}</span>
-                  <span class="description-from-type-label">Technical Challenge by Swedbank</span>
+                  <span class="description-from-type-label">${t('home_what_subtitle')}</span>
                   </div>
                 
                 <div class="what-main-panel">
                      <ul class="what-list-of-items">
-                        <li>HTML, CSS, JavaScript (no frameworks).</li>
-                        <li>"Swedbank-like"style.</li>
-                        <li>Single Page Application.</li>
-                        <li>4-step Loan Calculator.</li>
-                        <li>Made for modern browsers (Chrome / Firefox).</li>
+                        <li>${t('home_what_li_1')}</li>
+                        <li>${t('home_what_li_2')}</li>
+                        <li>${t('home_what_li_3')}</li>
+                        <li>${t('home_what_li_4')}</li>
+                        <li>${t('home_what_li_5')}</li>
                       </ul>
                  </div>
             </div>
@@ -44,15 +43,15 @@ export const Home = () => {
         </div>
     </div>
     
-<!--  When -->
+    <!-- WHEN -->
     <div class="home-content-window">
         
         <div class="upper-main-content-window">
-          <span class="step">What</span>
+          <span class="step">${t('step_what')}</span>
           <span class="dot"></span>
-          <span class="step active">When</span>
+          <span class="step active">${t('step_when')}</span>
           <span class="dot"></span>
-          <span class="step">Why</span>
+          <span class="step">${t('step_why')}</span>
         </div>
         
         <div class="when-lower-main-content-window">
@@ -60,15 +59,15 @@ export const Home = () => {
             <div class="when-lower-left-box">
                 
                 <div class="side-panel"> 
-                  <span class="primary-text">kood/Jõhvi JobFair</span>
-                  <span class="description-from-type-label">27th of March 2026.</span>
-                  <span class="description-from-type-label">3rd floor</span>
+                  <span class="primary-text">${t('home_when_title')}</span>
+                  <span class="description-from-type-label">${t('home_when_date')}</span>
+                  <span class="description-from-type-label">${t('home_when_floor')}</span>
                 </div>
                 
                 <div class="when-main-panel">
-                     <span>Jõhvi, Ida-Virumaa</span>
-                     <span>Address: Tartu põik 5</span>
-                     <span>Post code: 41537</span>
+                     <span>${t('home_when_city')}</span>
+                     <span>${t('home_when_address')}</span>
+                     <span>${t('home_when_postal')}</span>
                  </div>
             </div>
             
@@ -78,15 +77,15 @@ export const Home = () => {
         </div>
     </div>
     
-<!--  Why  -->
+    <!-- WHY -->
     <div class="home-content-window">
         
         <div class="upper-main-content-window">
-          <span class="step">What</span>
+          <span class="step">${t('step_what')}</span>
           <span class="dot"></span>
-          <span class="step">When</span>
+          <span class="step">${t('step_when')}</span>
           <span class="dot"></span>
-          <span class="step active">Why</span>
+          <span class="step active">${t('step_why')}</span>
         </div>
         
         <div class="why-lower-main-content-window">
@@ -94,29 +93,29 @@ export const Home = () => {
             <div class="why-lower-left-box">
                 
                 <div class="side-panel"> 
-                  <span class="primary-text">Full workflow demonstration:</span>
+                  <span class="primary-text">${t('home_why_title')}</span>
                 </div>
                 
                 <div class="why-main-panel">
                   <ul class="why-list-of-items">
                     <li>
-                      <strong class="item-title">Front-End skills:</strong>
-                      <a href="#" class="item-link">github link</a>
+                      <strong class="item-title">${t('home_why_li_1_title')}</strong>
+                      <a href="#/loan-calculator" class="item-link">${t('home_why_li_1_link')}</a>
                     </li>
                 
                     <li>
-                      <strong class="item-title">Agile Planning & Teamwork:</strong>
-                      <span class="item-link">> Shortcut link here..........</span>
+                      <strong class="item-title">${t('home_why_li_2_title')}</strong>
+                      <span class="item-link">${t('home_why_li_2_link')}</span>
                     </li>
                 
                     <li>
-                      <strong class="item-title">Design & UI, UX:</strong>
-                      <span class="item-link">> figma link here ........</span>
+                      <strong class="item-title">${t('home_why_li_3_title')}</strong>
+                      <span class="item-link">${t('home_why_li_3_link')}</span>
                     </li>
                 
                     <li>
-                      <strong class="item-title">Presentation & soft skills:</strong>
-                      <span class="item-link">> 27th of March, kood/Jõhvi (3rd floor)</span>
+                      <strong class="item-title">${t('home_why_li_4_title')}</strong>
+                      <span class="item-link">${t('home_why_li_4_link')}</span>
                     </li>
                   </ul>
                  </div>
@@ -127,17 +126,17 @@ export const Home = () => {
             </div>
         </div>
     </div>
-<!--  Made by  -->
+    
     <div class="home-content-window">
         
         <div class="upper-main-content-window">
-         <span class="step active"> Made by: </span>
+         <span class="step active"> ${t('home_made_by')} </span>
         </div>
         
         <div class="lower-main-content-window">
           
           <a href="#/loan-calculator" class="start-btn" style="text-decoration: none;" onclick="window.scrollTo(0,0);">
-            START APPLICATION
+            ${t('home_start_btn')}
           </a>
         </div>
     </div>

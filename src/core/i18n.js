@@ -2,6 +2,8 @@ import {LANGUAGES, settingsStorage} from './storage.js';
 
 import en from '../languages/en.json';
 import ee from '../languages/ee.json';
+import ru from '../languages/ru.json';
+
 
 const translations = {
     [LANGUAGES.EN]: en,

@@ -6,6 +6,7 @@ import { Step5 } from "./Step5.js";
 
 import { Component } from "../../core/Component.js";
 import { storage } from "../../core/storage.js";
+import {t} from "../../core/i18n.js";
 
 const stepComponents = {
 	1: Step1,
@@ -51,15 +52,9 @@ export class LoanCalculator extends Component {
 		this.persist();
 	}
 
-	// helper for step indicators
 	getIndicatorClass(stepIndex) {
 		const { currentStep, totalSteps } = this.state;
-
-		if (currentStep === totalSteps) {
-			return "icon-completed";
-		}
-
-		if (stepIndex < currentStep) {
+		if (currentStep === totalSteps || stepIndex < currentStep) {
 			return "icon-completed";
 		} else if (stepIndex === currentStep) {
 			return "icon-active";
@@ -70,13 +65,11 @@ export class LoanCalculator extends Component {
 
 	bindEvents() {
 		super.bindEvents();
-
 		const stepSlot = this.container.querySelector("#step-container");
 		const StepClass = stepComponents[this.state.currentStep];
 
 		if (this.activeStepInstance) this.activeStepInstance.destroy();
 
-		// passing wrapped props: state as data & updateGlobalData as onUpdate -> to child
 		this.activeStepInstance = new StepClass(stepSlot, {
 			data: this.state.formData,
 			onUpdate: (newData) => this.updateGlobalData(newData),
@@ -89,10 +82,7 @@ export class LoanCalculator extends Component {
 		const target = e.target.closest("button");
 		if (!target) return;
 
-		if (
-			target.id === "btn-next" &&
-			this.state.currentStep < this.state.totalSteps
-		) {
+		if (target.id === "btn-next" && this.state.currentStep < this.state.totalSteps) {
 			this.setState({ currentStep: this.state.currentStep + 1 });
 			this.persist();
 		}
@@ -107,46 +97,46 @@ export class LoanCalculator extends Component {
 		const { currentStep, totalSteps } = this.state;
 		const isFirstStep = currentStep === 1;
 
-		return `
-		<div class="calculator-wrapper">
+		// Define dynamic titles and descriptions using t()
+		const stepTitle = t(`calc_step_${currentStep}_title`);
+		const stepDesc = t(`calc_step_${currentStep}_desc`);
 
-			<div class="main-content-window calculator-header">
-				<div class="calculator-header-top">
-					<h2 class="step-title">${stepsData[currentStep].title}</h2>
+		return `
+			<div class="calculator-wrapper">
+			
+			  <div class="main-content-window calculator-header">
+				 <div class="calculator-header-top">
+					<h2 class="step-title">${stepTitle}</h2>
 					
 					<div class="calculator-steps">
-						<div class="step-indicator ${this.getIndicatorClass(1)}" id="ind-1">I</div>
-						<div class="step-indicator ${this.getIndicatorClass(2)}" id="ind-2">II</div>
-						<div class="step-indicator ${this.getIndicatorClass(3)}" id="ind-3">III</div>
-						<div class="step-indicator ${this.getIndicatorClass(4)}" id="ind-4">IV</div>
+					   <div class="step-indicator ${this.getIndicatorClass(1)}" id="ind-1">I</div>
+					   <div class="step-indicator ${this.getIndicatorClass(2)}" id="ind-2">II</div>
+					   <div class="step-indicator ${this.getIndicatorClass(3)}" id="ind-3">III</div>
+					   <div class="step-indicator ${this.getIndicatorClass(4)}" id="ind-4">IV</div>
 					</div>
-				</div>
-				
-				<div class="calculator-header-bot">
-					<div id="step-desc">${stepsData[currentStep].desc}</div>
+				 </div>
+				 
+				 <div class="calculator-header-bot">
+					<div id="step-desc">${stepDesc}</div>
 					
 					<div class="steps-navigation">
-						<button type="button" class="step-btn" id="btn-back"
-						${isFirstStep ? "disabled" : ""}>
-						
-							<span class="triangle-left"></span> BACK
-						</button>
-						
-						<button type="button" class="step-btn" id="btn-next"
-						${currentStep === totalSteps ? "disabled" : ""}>
-						
-							<span class="triangle-right"></span> NEXT
-						</button>
+					   <button type="button" class="step-btn" id="btn-back"
+					   ${isFirstStep ? "disabled" : ""}>
+						  <span class="triangle-left"></span> ${t('calc_btn_back')}
+					   </button>
+					   
+					   <button type="button" class="step-btn" id="btn-next"
+					   ${currentStep === totalSteps ? "disabled" : ""}>
+						  <span class="triangle-right"></span> ${t('calc_btn_next')}
+					   </button>
 					</div>
+				 </div>
 				</div>
-            </div>
-            
-            <div class="main-content-window"> 
-									
-				<!-- SLOT goes here -->
-				<div id="step-container"></div>
+				
+				<div class="main-content-window"> 
+				 <div id="step-container"></div>
+			  </div>
 			</div>
-		</div>
         `;
 	}
 }

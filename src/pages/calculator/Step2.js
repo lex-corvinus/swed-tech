@@ -1,5 +1,8 @@
-import { Component } from "../../core/Component.js";
 import { formHelpers } from "../../utils/formHelpers.js";
+import {calculateContractFee, calculateLoan, getAffordabilityWarning} from "../../utils/loanCalculation.js";
+
+import { Component } from "../../core/Component.js";
+import {t} from "../../core/i18n.js";
 
 export class Step2 extends Component {
 	bindEvents() {
@@ -43,17 +46,19 @@ export class Step2 extends Component {
 		const incomeMap = { low: 800, medium: 1500, high: 2500 };
 		const warning = getAffordabilityWarning(monthly, incomeMap[incomeKey]);
 
+		const formatLocale = 'et-EE';
+
 		this.container.querySelector("#monthly-payment-result").textContent =
-			monthly.toLocaleString("et-EE", {
+			monthly.toLocaleString(formatLocale, {
 				minimumFractionDigits: 2,
 				maximumFractionDigits: 2,
 			});
 
 		this.container.querySelector("#contract-fee-display").textContent =
-			Math.round(contractFee);
+			Math.round(contractFee).toLocaleString(formatLocale);
 
 		this.container.querySelector("#total-repayment-display").textContent =
-			Math.round(monthly * period).toLocaleString("et-EE");
+			Math.round(monthly * period).toLocaleString(formatLocale);
 
 		this.container.querySelector("#period-badge").textContent = period;
 
@@ -78,17 +83,15 @@ export class Step2 extends Component {
 
 		return `
         <div id="step2" class="form-step">
-        
           <div class="loan-calculator">
-            <h2>Loan request info</h2>
+            <h2>${t('step2_title')}</h2>
             
             <hr class="calculator-divider">
 
             <div class="upper-loan-calculator-grid">
-            
               <div class="grid-left">
                 <div class="input-group">
-                  <label>Loan Amount</label>
+                  <label>${t('step2_label_amount')}</label>
                   <div class="range-container">
                     <div class="input-wrapper">
                       <input type="number" class="loan-input" id="loan-input" value="${amount}">
@@ -103,7 +106,7 @@ export class Step2 extends Component {
                     </div>
                     
                     <div class="affordability-warning" id="affordability-warning">
-                        <span id="warning-text">Calculating...</span>
+                        <span id="warning-text">${t('step2_warning_calculating')}</span>
                     </div>
                   </div>
                 </div>
@@ -111,25 +114,25 @@ export class Step2 extends Component {
 
               <div class="grid-right">
                 <div class="input-group">
-                  <label>Your income:</label>
+                  <label>${t('step2_label_income')}</label>
                   <select id="income-dropdown">
-                    <option value="low" ${income === "low" ? "selected" : ""}>< 1000€</option>
-                    <option value="medium" ${income === "medium" ? "selected" : ""}>1000–2000€</option>
-                    <option value="high" ${income === "high" ? "selected" : ""}>> 2000€</option>
+                    <option value="low" ${income === "low" ? "selected" : ""}>${t('step2_income_low')}</option>
+                    <option value="medium" ${income === "medium" ? "selected" : ""}>${t('step2_income_medium')}</option>
+                    <option value="high" ${income === "high" ? "selected" : ""}>${t('step2_income_high')}</option>
                   </select>
                 </div>
 
                 <div class="input-group">
-                  <label>Loan period:</label>
+                  <label>${t('step2_label_period')}</label>
                   <select id="period-dropdown">
-                    <option value="12" ${period === 12 ? "selected" : ""}>12 months</option>
-                    <option value="24" ${period === 24 ? "selected" : ""}>24 months</option>
-                    <option value="36" ${period === 36 ? "selected" : ""}>36 months</option>
+                    <option value="12" ${period === 12 ? "selected" : ""}>12 ${t('step2_months')}</option>
+                    <option value="24" ${period === 24 ? "selected" : ""}>24 ${t('step2_months')}</option>
+                    <option value="36" ${period === 36 ? "selected" : ""}>36 ${t('step2_months')}</option>
                   </select>
                 </div>
 
                 <div class="input-group">
-                  <label>Interest Rate:</label>
+                  <label>${t('step2_label_interest')}</label>
                   <select id="interest-dropdown">
                     <option value="9.9" ${interestRate === 9.9 ? "selected" : ""}>9.9%</option>
                     <option value="16.3" ${interestRate === 16.3 ? "selected" : ""}>16.3%</option>
@@ -139,46 +142,44 @@ export class Step2 extends Component {
               </div>
             </div>
 
-			<hr class="calculator-divider">
+            <hr class="calculator-divider">
 
             <div class="result-section">
-            
                <div class="result-col-left">
-                   <h2>Monthly payment</h2>
-                   
+                   <h2>${t('step2_monthly_payment')}</h2>
                    <div class="period-info-container">
-						<span class="period-info-label">Period:</span>
-						<div class="period-info-box">
-							<span id="period-dates-display">TEST</span>
-						</div>
-					</div>
+                   
+                      <span class="period-info-label">${t('step2_period_label')}</span>
+                      <div class="period-info-box">
+                         <span id="period-badge">${period}</span> ${t('step2_months')}
+                      </div>
+                   </div>
                </div>
                
                <div class="result-col-mid">
-				   <div class="result-info-container">
-				       <span class="result-info-label">Service fee:</span>
-				       
-					   <div class="result-info-box">
-					   		TEST
-					   </div>
-				   </div>
-			   
-				   <div class="result-info-container">
-					   <span class="result-info-label">Total Repayment:</span>
-					   
-					   <div class="result-info-box">
-					   		TEST
-					   </div>
+                <div class="result-info-container">'
+                
+                    <span class="result-info-label">${t('step2_service_fee')}</span>
+                    <div class="result-info-box">
+                        <span id="contract-fee-display">0</span> €
+                    </div>
+                </div>
+             
+                <div class="result-info-container">
+                
+                   <span class="result-info-label">${t('step2_total_repayment')}</span>
+                   <div class="result-info-box">
+                       <span id="total-repayment-display">0</span> €
                    </div>
+                </div>
                </div>
 
                <div class="result-container-right">
                    <div class="final-price">
-                       <span id="monthly-payment-result">0,00</span>
+                       <span id="monthly-payment-result">0,00</span> €
                    </div>
                </div>
             </div>
-            
           </div>
         </div>`;
 	}
