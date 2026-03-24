@@ -5,6 +5,7 @@ import { initRouter } from "./core/router.js";
 
 import "./styles/calculator.css";
 import "./styles/header.css";
+import "./styles/footer.css";
 import "./styles/home.css";
 import "./styles/steps.css";
 
