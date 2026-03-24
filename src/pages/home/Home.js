@@ -1,6 +1,6 @@
 import photoWhat from '../../assets/loan_picture.jpg';
 import photoWhen from '../../assets/koodJohvi_002.jpg';
-import photoWhy from '../../assets/Group_photo.jpg';
+import photoWhy from '../../assets/group_photo.jpg';
 
 export const Home = () => {
 

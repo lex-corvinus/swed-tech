@@ -116,7 +116,7 @@ body {
 /*MAIN OUTLET WRAPPER*/
 .outlet-wrapper {
 	display: grid;
-	grid-template-columns: minmax(1rem, 1fr) 75rem minmax(1rem, 1fr);
+    grid-template-columns: minmax(1rem, 1fr) min(calc(100% - 2rem), 75rem) minmax(1rem, 1fr);
 	grid-template-rows: 1fr;
 
 	width: 100%;

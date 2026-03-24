@@ -12,7 +12,11 @@ export const Header = () => {
         
             <!--      TOP ROW      -->
             <div class="header-row-top">
-               
+            
+               <button id="theme-toggle" class="light-dark-button">
+                  <span class="icon-sun">${sun}</span>
+                  <span class="icon-moon">${moon}</span>
+               </button>
             </div>
             
             <!--      MIDDLE ROW      -->
@@ -27,28 +31,24 @@ export const Header = () => {
                     </div>
                 </div>
                 
-                <div class="contacts-dropdown desktop-only">
-                    <span>Contacts</span>
-                    <div class="contacts-dropdown-options" >
-                        <span>SOME COOL</span>
-                        <span>INFO WILL</span>
-                        <span>BE HERE</span>
-                    </div>
-                </div>
-                
                 <!-- Right Side Actions -->
                 <div class="header-row-mid-right">
-                    <button id="theme-toggle" class="light-dark-button">
-                        <span class="icon-sun">${sun}</span>
-                        <span class="icon-moon">${moon}</span>
-                    </button>
-                    
-                    <!-- Hamburger Icon -->
-                    <div id="hamburger-btn" class="hamburger-menu" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobile-nav">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </div>
+                
+                  <div class="contacts-dropdown desktop-only">
+                      <span>Contacts</span>
+                      <div class="contacts-dropdown-options" >
+                          <span>SOME COOL</span>
+                          <span>INFO WILL</span>
+                          <span>BE HERE</span>
+                      </div>
+                  </div>
+
+                                <!-- Hamburger Icon -->
+                                <div id="hamburger-btn" class="hamburger-menu" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobile-nav">
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                </div>
                 </div>
             </div>
             
@@ -82,51 +82,51 @@ export const Header = () => {
 };
 
 export const initHeader = () => {
-  const btn = document.getElementById('hamburger-btn');
-  const nav = document.getElementById('mobile-nav');
-  const content = document.querySelector('.header-content');
+    const btn = document.getElementById('hamburger-btn');
+    const nav = document.getElementById('mobile-nav');
+    const content = document.querySelector('.header-content');
 
-  if (!btn || !nav) return;
+    if (!btn || !nav) return;
 
-  const openMenu = () => {
-    content.classList.add('nav-open');
-    btn.setAttribute('aria-expanded', 'true');
-    btn.setAttribute('aria-label', 'Close navigation menu');
-  };
+    const openMenu = () => {
+        content.classList.add('nav-open');
+        btn.setAttribute('aria-expanded', 'true');
+        btn.setAttribute('aria-label', 'Close navigation menu');
+    };
 
-  const closeMenu = () => {
-    content.classList.remove('nav-open');
-    btn.setAttribute('aria-expanded', 'false');
-    btn.setAttribute('aria-label', 'Open navigation menu');
-  };
+    const closeMenu = () => {
+        content.classList.remove('nav-open');
+        btn.setAttribute('aria-expanded', 'false');
+        btn.setAttribute('aria-label', 'Open navigation menu');
+    };
 
-  // Toggle on button click
-  btn.addEventListener('click', (e) => {
-    e.stopPropagation();
-    const isOpen = content.classList.contains('nav-open');
-    isOpen ? closeMenu() : openMenu();
-  });
+    // Toggle on button click
+    btn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const isOpen = content.classList.contains('nav-open');
+        isOpen ? closeMenu() : openMenu();
+    });
 
-  nav.addEventListener('click', (e) => {
-    e.stopPropagation();
-  });
+    nav.addEventListener('click', (e) => {
+        e.stopPropagation();
+    });
 
-  // Close when a nav link is clicked
-  nav.querySelectorAll('.mobile-link').forEach(link => {
-    link.addEventListener('click', closeMenu);
-  });
+    // Close when a nav link is clicked
+    nav.querySelectorAll('.mobile-link').forEach(link => {
+        link.addEventListener('click', closeMenu);
+    });
 
-  // Close on Escape key
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && content.classList.contains('nav-open')) {
-      closeMenu();
-    }
-  });
+    // Close on Escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && content.classList.contains('nav-open')) {
+            closeMenu();
+        }
+    });
 
-  // Close when clicking outside the header
-  document.addEventListener('click', (e) => {
-    if (!content.contains(e.target) && content.classList.contains('nav-open')) {
-      closeMenu();
-    }
-  });
+    // Close when clicking outside the header
+    document.addEventListener('click', (e) => {
+        if (!content.contains(e.target) && content.classList.contains('nav-open')) {
+            closeMenu();
+        }
+    });
 };
