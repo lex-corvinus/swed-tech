@@ -18,7 +18,7 @@ export class Extras extends Component {
                     <a class="extras-link" href="https://www.figma.com/design/4zkxUawp1PJ6gUiHnqfvGN/SWEDBANK?node-id=0-1&t=hPUyIWZGgM8GPrYl-1">Figma redirect</a>
                     
                     <h3 class="extras-point">Shortcut Board:</h3>
-                    <a class="extras-link"></a>
+                    <a class="extras-link">NOT PUBLICALLY AVAILABLE :(</a>
                 </ul>
             </div>
         `;

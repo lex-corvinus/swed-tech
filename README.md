@@ -88,7 +88,7 @@ Loan Calculator -> by navigating to ```Loan Calculator``` tab, OR pressing **STA
 ---
 
 ### Extra
-6. UI& UX Design made using Figma: https://www.figma.com/design/4zkxUawp1PJ6gUiHnqfvGN/SWEDBANK?node-id=0-1&t=hPUyIWZGgM8GPrYl-1
-7. Dual theme: Dark/Light theme optimization for all interfaces → accessibility improvement.
-8. Render-based translation → avoids overloading DOM, most cost-effective translation.
-9. Responsive Design for Mobile devices -> accessibility imporvement.
+6. **UI& UX Design made using Figma**: https://www.figma.com/design/4zkxUawp1PJ6gUiHnqfvGN/SWEDBANK?node-id=0-1&t=hPUyIWZGgM8GPrYl-1
+7. **Dual theme**: Dark/Light theme optimization for all interfaces → accessibility improvement.
+8. **Render-based translation** → avoids overloading DOM, most cost-effective translation.
+9. **Responsive Design** for Mobile devices -> accessibility improvement.

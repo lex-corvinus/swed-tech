@@ -8,13 +8,18 @@ export class Step4 extends Component {
 		const textarea = this.container.querySelector("#additional-info");
 		if (textarea) {
 			textarea.addEventListener("input", (e) => {
+				const textValue = e.target.value;
+
+				const isValid = textValue.trim().length >= 10;
+
 				this.state.onUpdate({
-					additionalInfo: e.target.value,
+					additionalInfo: textValue,
+					isStepValid: isValid
 				});
 
 				const counter = this.container.querySelector("#char-counter");
 				if (counter) {
-					counter.textContent = `${e.target.value.length}/500`;
+					counter.textContent = `${textValue.length}/1000`;
 				}
 			});
 		}

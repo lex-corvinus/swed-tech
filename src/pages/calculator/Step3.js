@@ -2,28 +2,31 @@ import { Component } from "../../core/Component.js";
 import { t } from "../../core/i18n.js";
 
 export class Step3 extends Component {
-	handleEvents(e) {
-		if (e.target.type !== "checkbox") return;
+	bindEvents() {
+		super.bindEvents();
 
-		const { id, checked } = e.target;
-		const { consents } = this.state.data;
+		const checkboxes = this.container.querySelectorAll('input[type="checkbox"]');
+		checkboxes.forEach(cb => {
+			cb.addEventListener('change', (e) => {
+				const { id, checked } = e.target;
+				const { consents } = this.state.data;
 
-		const keyMap = {
-			"consent-terms": "terms",
-			"consent-privacy": "privacy",
-			"consent-marketing": "marketing",
-		};
+				const keyMap = {
+					"consent-terms": "terms",
+					"consent-privacy": "privacy",
+					"consent-marketing": "marketing",
+				};
 
-		const consentKey = keyMap[id];
+				const consentKey = keyMap[id];
 
-		if (consentKey) {
-			this.state.onUpdate({
-				consents: {
-					...consents,
-					[consentKey]: checked,
-				},
+				if (consentKey) {
+					this.state.data.consents[consentKey] = checked;
+					this.state.onUpdate({
+						consents: this.state.data.consents,
+					});
+				}
 			});
-		}
+		});
 	}
 
 	render() {

@@ -2,14 +2,17 @@ import { Component } from "../../core/Component.js";
 import { t } from "../../core/i18n.js";
 
 export class Step1 extends Component {
-	handleEvents(e) {
-		if (e.target.type === "radio" && e.target.name === "employment") {
-			const newValue = e.target.value;
+	bindEvents() {
+		super.bindEvents();
 
-			this.state.onUpdate({
-				employment: newValue,
+		const radios = this.container.querySelectorAll('input[type="radio"]');
+		radios.forEach(radio => {
+			radio.addEventListener('change', (e) => {
+				this.state.onUpdate({
+					employment: e.target.value,
+				});
 			});
-		}
+		});
 	}
 
 	render() {
