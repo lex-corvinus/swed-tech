@@ -31,7 +31,7 @@ export const Footer = () => {
         </div>
         
         <div class="footer-legal">
-            Team
+            LEGAL NOTICE SECTION
         </div>
     </div>
     `;
