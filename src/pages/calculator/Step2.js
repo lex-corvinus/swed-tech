@@ -223,7 +223,9 @@ export class Step2 extends Component {
 
                <div class="result-container-right">
                    <div class="final-price">
+                   <div class="montly-payment-container">
                        <span id="monthly-payment-result">${monthlyPaymentResult}</span>
+                       <span>EUR</span>
                    </div>
                </div>
             </div>

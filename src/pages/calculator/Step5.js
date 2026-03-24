@@ -120,7 +120,10 @@ export class Step5 extends Component {
               <div class="summary-wrapper-bot">
 				<div class="result-container-right">
 					<div class="final-price">
-						<span id="monthly-payment-result">${monthlyPaymentResult}</span>
+						<div class="montly-payment-container">
+							<span id="monthly-payment-result">${monthlyPaymentResult}</span>
+							<span>EUR</span>
+						</div>
 					</div>
 				</div>
                   

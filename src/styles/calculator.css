@@ -292,6 +292,14 @@ input[type="range"]::-webkit-slider-thumb {
 	color: var(--text-main);
 	border-radius: 4px;
 }
+#income-dropdown:focus-visible,
+#interest-dropdown:focus-visible,
+#period-dropdown:focus-visible,
+#loan-input:focus-visible {
+	outline: 2px solid var(--secondary-active);
+	outline-offset: 2px;
+	border-color: var(--secondary-active);
+}
 #additional-info {
 	background-color: var(--bg-inner-box);
 	color: var(--text-main);
