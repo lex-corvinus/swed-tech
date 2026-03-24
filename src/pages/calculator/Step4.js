@@ -1,4 +1,5 @@
 import { Component } from "../../core/Component.js";
+import {t} from "../../core/i18n.js";
 
 export class Step4 extends Component {
 	bindEvents() {
@@ -20,11 +21,11 @@ export class Step4 extends Component {
 		return `
         <div id="step4" class="form-step">
             <div class="input-group">
-                <label for="additional-info">Additional info:</label>
+                <label for="additional-info">${t('step4_label')}</label>
                 
                 <textarea 
                     id="additional-info" 
-                    placeholder="Type your message here..."
+                    placeholder="${t('step4_placeholder')}"
                 >${additionalInfo || ""}</textarea>
             </div>
         </div>

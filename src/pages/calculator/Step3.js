@@ -1,4 +1,5 @@
 import { Component } from "../../core/Component.js";
+import {t} from "../../core/i18n.js";
 
 export class Step3 extends Component {
 	handleEvents(e) {
@@ -30,27 +31,26 @@ export class Step3 extends Component {
 
 		return `
         <div id="step3" class="form-step">
-        
             <div class="consent-group">
                 <label class="check-item">
-                
                     <input type="checkbox" id="consent-terms" 
                         ${consents.terms ? "checked" : ""}>
-                    <span>I agree to the <a href="#">Terms and Conditions</a> *</span>
+                    <span>
+                        ${t('step3_consent_terms_text')} 
+                        <a href="#">${t('step3_consent_terms_link')}</a> *
+                    </span>
                 </label>
                 
                 <label class="check-item">
-                
                     <input type="checkbox" id="consent-privacy" 
                         ${consents.privacy ? "checked" : ""}>
-                    <span>I agree to the Privacy Policy *</span>
+                    <span>${t('step3_consent_privacy')}</span>
                 </label>
 
                 <label class="check-item">
-                
                     <input type="checkbox" id="consent-marketing" 
                         ${consents.marketing ? "checked" : ""}>
-                    <span>Send me loan offers (Optional)</span>
+                    <span>${t('step3_consent_marketing')}</span>
                 </label>
             </div>
         </div>

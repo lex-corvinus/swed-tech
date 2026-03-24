@@ -2,6 +2,8 @@ import { Header, initHeader } from './partials/Header.js';
 import { Footer } from './partials/Footer.js';
 
 import { initRouter } from "./core/router.js";
+import {initI18n} from "./core/i18n.js";
+import {settingsStorage, THEMES, LANGUAGES} from "./core/storage.js";
 
 import "./styles/calculator.css";
 import "./styles/header.css";
@@ -19,10 +21,9 @@ const initLayout = () => {
     initHeader();
 };
 document.addEventListener("DOMContentLoaded", () => {
+    document.documentElement.setAttribute('data-theme', settingsStorage.getTheme());
 
-    const savedTheme = localStorage.getItem('theme') || 'light';
-    document.documentElement.setAttribute('data-theme', savedTheme);
-
+    initI18n();
 
     initLayout();
 
@@ -33,10 +34,21 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (themeBtn) {
             const currentTheme = document.documentElement.getAttribute('data-theme');
-            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            const newTheme = currentTheme === THEMES.DARK ? THEMES.LIGHT : THEMES.DARK;
 
             document.documentElement.setAttribute('data-theme', newTheme);
-            localStorage.setItem('theme', newTheme);
+            settingsStorage.setTheme(newTheme);
+        }
+
+        const langBtn = e.target.closest("[data-lang]");
+        if (langBtn) {
+            const newLanguage = langBtn.getAttribute("data-lang");
+
+            if (Object.values(LANGUAGES).includes(newLanguage)) {
+                settingsStorage.setLanguage(newLanguage);
+
+                window.location.reload();
+            }
         }
     });
 });

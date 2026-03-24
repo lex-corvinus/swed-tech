@@ -12,6 +12,14 @@ export const Header = () => {
         
             <!--      TOP ROW      -->
             <div class="header-row-top">
+                <div class="language-dropdown">
+                    <button id="lang-toggle">ENG ▼</button>
+                    <div class="language-dropdown-options" id="lang-menu">
+                        <span data-lang="en">ENG</span>
+                        <span data-lang="ee">EST</span>
+                        <span data-lang="ru">RUS</span>
+                    </div>
+                </div>
             
                <button id="theme-toggle" class="light-dark-button">
                   <span class="icon-sun">${sun}</span>
@@ -56,7 +64,7 @@ export const Header = () => {
             <div class="header-row-bot desktop-only">
                 
                 <div class="left-item">
-                      <a href="/" data-link class="nav-svg-link">
+                      <a href="#/" data-link class="nav-svg-link">
                         ${homeSvg}
                     </a>
                 </div>
