@@ -1,10 +1,15 @@
 import { Component } from "../../core/Component.js";
 
 export class Step4 extends Component {
-	handleEvents(e) {
-		if (e.target.id === "additional-info") {
-			this.state.onUpdate({
-				additionalInfo: e.target.value,
+	bindEvents() {
+		super.bindEvents();
+		
+		const textarea = this.container.querySelector("#additional-info");
+		if (textarea) {
+			textarea.addEventListener("input", (e) => {
+				this.state.onUpdate({
+					additionalInfo: e.target.value,
+				});
 			});
 		}
 	}

@@ -8,6 +8,9 @@ const initialLoanState = {
 		period: 24,
 		income: "low",
 		interestRate: 16.3,
+		monthlyPaymentResult: "0,00",
+		totalRepayment: "0,00",
+		contractFee: "35,00",
 
 		// # 3
 		consents: {

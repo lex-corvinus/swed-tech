@@ -1,11 +1,10 @@
+import { Component } from "../../core/Component.js";
+import { storage } from "../../core/storage.js";
 import { Step1 } from "./Step1.js";
 import { Step2 } from "./Step2.js";
 import { Step3 } from "./Step3.js";
 import { Step4 } from "./Step4.js";
 import { Step5 } from "./Step5.js";
-
-import { Component } from "../../core/Component.js";
-import { storage } from "../../core/storage.js";
 
 const stepComponents = {
 	1: Step1,
@@ -28,7 +27,7 @@ export class LoanCalculator extends Component {
 		const savedState = storage.load();
 
 		super(containerElement, {
-			currentStep: 1,
+			currentStep: savedState.currentStep || 1,
 			totalSteps: 5,
 			formData: savedState.formData,
 		});
@@ -45,9 +44,10 @@ export class LoanCalculator extends Component {
 	}
 
 	updateGlobalData(newData) {
-		this.setState({
+		this.state = {
+			...this.state,
 			formData: { ...this.state.formData, ...newData },
-		});
+		};
 		this.persist();
 	}
 

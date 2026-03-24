@@ -1,22 +1,20 @@
-import {AFFORDABILITY} from "./config.js";
+import { AFFORDABILITY } from "./config.js";
 
 const CENTS = 100n;
 const SCALE = 10_000_000_000n; // 10^10
 
-
 /* Helpers */
 
 function toCents(euros) {
-  return BigInt(Math.round(euros * 100));
+	return BigInt(Math.round(euros * 100));
 }
 
 function toEuros(cents) {
-  // Split into whole euros and remainder cents to avoid float imprecision
-  const whole = cents / CENTS;
-  const remainder = cents % CENTS;
-  return Number(whole) + Number(remainder) / 100;
+	// Split into whole euros and remainder cents to avoid float imprecision
+	const whole = cents / CENTS;
+	const remainder = cents % CENTS;
+	return Number(whole) + Number(remainder) / 100;
 }
-
 
 /**Each step rounds to the nearest unit so that
  * error doesn't accumulate across hundreds of iterations.
@@ -29,12 +27,12 @@ function toEuros(cents) {
  */
 
 function scaledPow(base, exp) {
-  let result = SCALE;
-  const half = SCALE / 2n;
-  for (let i = 0; i < exp; i++) {
-    result = (result * base + half) / SCALE;
-  }
-  return result;
+	let result = SCALE;
+	const half = SCALE / 2n;
+	for (let i = 0; i < exp; i++) {
+		result = (result * base + half) / SCALE;
+	}
+	return result;
 }
 
 /* Methods for loan */
@@ -54,51 +52,65 @@ function scaledPow(base, exp) {
  * @returns {{ monthly: number, totalRepaid: number, totalInterest: number }}
  */
 export function calculateLoan(principal, annualRate, months) {
-  const P = toCents(principal);
-  const n = months;
+	const P = toCents(principal);
+	const n = months;
 
-  // Monthly rate encoded at SCALE precision:  r_s = (annualRate / 100 / 12) * SCALE
-  const r_s = BigInt(Math.round((annualRate / 100 / 12) * Number(SCALE))) // r
+	// Monthly rate encoded at SCALE precision:  r_s = (annualRate / 100 / 12) * SCALE
+	const r_s = BigInt(Math.round((annualRate / 100 / 12) * Number(SCALE))); // r
 
-  let monthly_cents;
+	let monthly_cents;
 
-  if (r_s === 0n) {
-    monthly_cents = (P + BigInt(n) - 1n) / BigInt(n); // no interest
+	if (r_s === 0n) {
+		monthly_cents = (P + BigInt(n) - 1n) / BigInt(n); // no interest
+	} else {
+		const oneR_s = SCALE + r_s; // 1 + r
+		const oneRn_s = scaledPow(oneR_s, n); // (1 + r)^n
 
-  } else {
-    const oneR_s = SCALE + r_s;  // 1 + r
-    const oneRn_s = scaledPow(oneR_s, n); // (1 + r)^n
+		const divisor = SCALE * (oneRn_s - SCALE);
+		const numerator = P * r_s * oneRn_s;
 
-    const divisor = SCALE * (oneRn_s - SCALE);
-    const numerator = P * r_s * oneRn_s;
+		monthly_cents = (numerator + divisor / 2n) / divisor;
+	}
 
-    monthly_cents = (numerator + divisor / 2n) / divisor;
-  }
+	const totalRepaid_cents = monthly_cents * BigInt(n);
+	const totalInterest_cents = totalRepaid_cents - P;
 
-  const totalRepaid_cents = monthly_cents * BigInt(n);
-  const totalInterest_cents = totalRepaid_cents - P;
-
-  return {
-    monthly: toEuros(monthly_cents),
-    totalRepaid: toEuros(totalRepaid_cents),
-    totalInterest: toEuros(totalInterest_cents),
-  };
+	return {
+		monthly: toEuros(monthly_cents),
+		totalRepaid: toEuros(totalRepaid_cents),
+		totalInterest: toEuros(totalInterest_cents),
+	};
 }
 
 export function getAffordabilityWarning(monthly, income) {
-  const monthlyC = toCents(monthly); // monthly cents
-  const incomeC = toCents(income); // income cents
+	const monthlyC = toCents(monthly); // monthly cents
+	const incomeC = toCents(income); // income cents
 
-  // Compute (monthly / income * 100) rounded to nearest whole percent.
-  // Multiply by 10_000n first (= 100 * 100) to keep two extra digits for
-  // rounding, then bring back to a plain JS number for the threshold checks.
-  const rawPct100 = Number(monthlyC * 10_000n / incomeC); // truncated × 100
-  const pct = Math.round(rawPct100 / 100); // percent
+	// Compute (monthly / income * 100) rounded to nearest whole percent.
+	// Multiply by 10_000n first (= 100 * 100) to keep two extra digits for
+	// rounding, then bring back to a plain JS number for the threshold checks.
+	const rawPct100 = Number((monthlyC * 10_000n) / incomeC); // truncated × 100
+	const pct = Math.round(rawPct100 / 100); // percent
 
-  if (pct > AFFORDABILITY.HARD_LIMIT) return {level: 'danger', pct};
-  if (pct > AFFORDABILITY.SOFT_LIMIT) return {level: 'caution', pct};
+	if (pct > AFFORDABILITY.HARD_LIMIT)
+		return {
+			level: "danger",
+			pct,
+			message: `Warning: payment is ${pct}% of income — loan may be rejected.`,
+		};
 
-  return {level: 'ok', pct};
+	if (pct > AFFORDABILITY.SOFT_LIMIT)
+		return {
+			level: "caution",
+			pct,
+			message: `Caution: payment is ${pct}% of income — approaching the limit.`,
+		};
+
+	return {
+		level: "ok",
+		pct,
+		message: `Your financial status looks good.`,
+	};
 }
 
 /**
@@ -110,17 +122,17 @@ export function getAffordabilityWarning(monthly, income) {
  * @returns {number} Fee in €, rounded to the nearest cent
  */
 export function calculateContractFee(amount, config) {
-  const amountC = toCents(amount);
+	const amountC = toCents(amount);
 
-  // Encode the percentage as an integer of hundredths to avoid float issues
-  // (e.g. 1.5 % → 150 basis-point-hundredths; 1.3 % → 130, not 129.999…)
-  const feeBps = BigInt(Math.round(config.CONTRACT_FEE_PCT * 100));
+	// Encode the percentage as an integer of hundredths to avoid float issues
+	// (e.g. 1.5 % → 150 basis-point-hundredths; 1.3 % → 130, not 129.999…)
+	const feeBps = BigInt(Math.round(config.CONTRACT_FEE_PCT * 100));
 
-  // fee = amount * (CONTRACT_FEE_PCT / 100)
-  //     = amountC * feeBps / 10_000   (because feeBps = pct * 100)
-  // Round to nearest cent.
-  const feeC = (amountC * feeBps + 5_000n) / 10_000n;
-  const minFeeC = toCents(config.MIN_CONTRACT_FEE);
+	// fee = amount * (CONTRACT_FEE_PCT / 100)
+	//     = amountC * feeBps / 10_000   (because feeBps = pct * 100)
+	// Round to nearest cent.
+	const feeC = (amountC * feeBps + 5_000n) / 10_000n;
+	const minFeeC = toCents(config.MIN_CONTRACT_FEE);
 
-  return toEuros(feeC < minFeeC ? minFeeC : feeC);
+	return toEuros(feeC < minFeeC ? minFeeC : feeC);
 }
