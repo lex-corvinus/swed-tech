@@ -1,13 +1,24 @@
+import CautionIcon from "../../assets/caution-smile.svg";
+import DangerIcon from "../../assets/danger-smile.svg";
+import OkayIcon from "../../assets/ok-smile.svg";
+
 import { Component } from "../../core/Component.js";
-import {calculateLoan} from "../../utils/loanCalculation.js";
-import {SubmitBtn} from "./components/SubmitBtn.js";
+import { SubmitBtn } from "./components/SubmitBtn.js";
 
 export class Step5 extends Component {
 	render() {
-		const { amount, interestRate, period, income, employment } = this.state.data;
-
-		const { monthly } = calculateLoan(amount, interestRate, period);
-		const totalRepayment = monthly * period;
+		const {
+			amount,
+			interestRate,
+			period,
+			income,
+			employment,
+			monthlyPaymentResult,
+			totalRepayment,
+			additionalInfo,
+			warningLevel,
+			warningMessage,
+		} = this.state.data;
 
 		return `
         <div id="step5" class="form-step">
@@ -19,10 +30,10 @@ export class Step5 extends Component {
                       <div class="summary-label-box">
                           <div class="label-title">
                               <span class="label-title-a">MONTHLY INCOME</span>
-                              <span class="label-title-b">(${employment || 'N/A'})</span>
+                              <span class="label-title-b">(${employment || "N/A"})</span>
                           </div>
                           <div class="label-value">
-                              <span class="label-value-a">${income || '0'}</span>
+                              <span class="label-value-a">${income || "0"}</span>
                           </div>
                       </div>
                       
@@ -65,21 +76,29 @@ export class Step5 extends Component {
                         <span class="label-title-a" >ADDITIONAL INFO</span>
                       </div>
                       <div class="label-title">
-                        <span class="label-value-b">...</span>
+                        <span class="label-value-b">${additionalInfo}</span>
                       </div>
                     </div>
                   </div>
               </div>
               
               <div class="summary-wrapper-mid">
-                  <div>SJUDA EXTRA INFO</div>
+                  <div class="affordability-warning-summary  ${warningLevel}" data-level="${warningLevel}">
+  										<span>${warningMessage}</span>
+                          <div class="icon-wrapper-summary">
+                            <img class="status-icon-sum icon-ok" src="${OkayIcon}" alt="ok">
+                            <img class="status-icon-sum icon-caution" src="${CautionIcon}"  alt="caution">
+                            <img class="status-icon-sum icon-danger" src="${DangerIcon}"  alt="danger">
+                          </div>
+  								</div>
+  								
                   <div class="summary-label-box">
                     <div class="label-title">
                         <span class="label-title-a">TOTAL REPAYMENT SUM</span>
                         <span class="label-title-b">(Service fee included)</span>
                     </div>
                     <div class="label-value">
-                        <span class="label-value-a">${Math.round(totalRepayment).toLocaleString('et-EE')}</span>
+                        <span class="label-value-a">${totalRepayment}</span>
                         <span class="label-value-b">EUR</span>
                     </div>
                   </div>
@@ -88,7 +107,7 @@ export class Step5 extends Component {
               <div class="summary-wrapper-bot">
 				<div class="result-container-right">
 					<div class="final-price">
-						<span id="monthly-payment-result">0,00</span>
+						<span id="monthly-payment-result">${monthlyPaymentResult}</span>
 					</div>
 				</div>
                   
