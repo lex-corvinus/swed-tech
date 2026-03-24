@@ -156,7 +156,7 @@ export class Step2 extends Component {
                       
                         <div class="affordability-warning" id="affordability-warning" data-level="ok">
                         
-                          <span id="warning-text">${t("step2_warning_calculating")}</span>
+                          <span id="warning-text">${t('step2_warning_calculating')}</span>
                           
                           <div class="icon-wrapper">
                             <img class="status-icon icon-ok" src="${OkayIcon}" alt="ok">
@@ -175,9 +175,9 @@ export class Step2 extends Component {
                   <label>Your income:</label>
                   <div class="select-wrapper">
 										<select id="income-dropdown">
-											<option value="low" ${income === `${INCOME_MAP.low}` ? "selected" : ""}>${t("step2_income_low")}</option>
-											<option value="medium" ${income === `${INCOME_MAP.medium}` ? "selected" : ""}>${t("step2_income_medium")}</option>
-											<option value="high" ${income === `${INCOME_MAP.high}` ? "selected" : ""}>${t("step2_income_high")}</option>
+											<option value="low" ${income === `${INCOME_MAP.low}` ? "selected" : ""}>${t('step2_income_low')}</option>
+											<option value="medium" ${income === `${INCOME_MAP.medium}` ? "selected" : ""}>${t('step2_income_medium')}</option>
+											<option value="high" ${income === `${INCOME_MAP.high}` ? "selected" : ""}>${t('step2_income_high')}</option>
 										</select>
                   </div>
                 </div>
@@ -240,7 +240,10 @@ export class Step2 extends Component {
 
                <div class="result-container-right">
                    <div class="final-price">
-                       <span id="monthly-payment-result">${monthlyPaymentResult}</span>
+                       <div class="montly-payment-container">
+                            <span id="monthly-payment-result">${monthlyPaymentResult}</span>
+                            <span>EUR</span>
+                       </div>
                        <span id="monthly-payment-text">${t("calc_monthly_result")}</span>
                    </div>
                </div>

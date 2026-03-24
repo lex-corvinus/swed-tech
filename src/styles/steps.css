@@ -94,11 +94,15 @@
 	color: #31a4b4;
 	background: transparent;
 }
+.step-title {
+	font-size: 2rem;
+	color: var(--primary-active);
+	font-weight: bold;
+}
 
 .step-btn:disabled {
-	color: #e0e0e0;
+	color: #7e7e7e;
 	cursor: not-allowed;
-	text-decoration-color: #e0e0e0;
 }
 .triangle-left,
 .triangle-right {

@@ -1,9 +1,11 @@
 import { LoanCalculator } from "../pages/calculator/LoanCalculator.js";
 import { Home } from "../pages/home/Home.js";
+import { Extras } from "../pages/extras/Extras.js";
 
 const routes = {
-	"/": { title: "Home", render: Home },
+	"/": { title: "Home", component: Home },
 	"/loan-calculator": { title: "Loan Calculator", component: LoanCalculator },
+	"/extras": { title: "Extras", component: Extras },
 
 	404: { title: "404", render: () => "<h1>Page Not Found</h1>" },
 };
@@ -31,6 +33,7 @@ const renderPage = () => {
 
 	if (route.component) {
 		activeComponentInstance = new route.component(appRoot);
+		activeComponentInstance.updateDOM();
 	} else if (route.render) {
 		appRoot.innerHTML = route.render();
 		if (route.init) {

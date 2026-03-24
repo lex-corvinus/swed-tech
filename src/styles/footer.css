@@ -39,11 +39,28 @@
 
     height: 100%;
     width: 100%;
+    gap: 0;
 
     margin-bottom: 1rem;
 }
 .footer-content-col p {
     margin-bottom: 1rem;
+}
+
+.footer-content a {
+    color: var(--text-alternative);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s ease;
+}
+
+.footer-content a:hover {
+    color: var(--primary-active);
+    text-decoration: underline;
+}
+.devs {
+    font-weight: bold;
+    color: var(--primary-active);
 }
 
 .footer-legal {

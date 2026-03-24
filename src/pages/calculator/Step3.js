@@ -37,7 +37,8 @@ export class Step3 extends Component {
                         ${consents.terms ? "checked" : ""}>
                     <span>
                         ${t('step3_consent_terms_text')} 
-                        <a href="#">${t('step3_consent_terms_link')}</a> *
+                        <a href="#" class="terms-link">${t('step3_consent_terms_link')}</a>
+                        <span class="required-star">*</span>
                     </span>
                 </label>
                 
@@ -45,6 +46,7 @@ export class Step3 extends Component {
                     <input type="checkbox" id="consent-privacy" 
                         ${consents.privacy ? "checked" : ""}>
                     <span>${t('step3_consent_privacy')}</span>
+                    <span class="required-star">*</span>
                 </label>
 
                 <label class="check-item">

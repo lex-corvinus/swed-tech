@@ -115,17 +115,20 @@ export class Step5 extends Component {
                   </div>
               </div>
               
-							<div class="summary-wrapper-bot">
-								<div class="result-container-right">
-									<div class="final-price">
-										<span id="monthly-payment-result">${monthlyPaymentResult}</span>
-									  <span id="monthly-payment-text">${t("calc_monthly_result")}</span>
-									</div>
-								</div>
-                  
-								<div class="summary-bot-container">
-									${new SubmitBtn().render()}
-								</div>
+                <div class="summary-wrapper-bot">
+                <div class="result-container-right">
+                    <div class="final-price">
+
+                        <div class="montly-payment-container">
+							<span id="monthly-payment-result">${monthlyPaymentResult}</span>
+							<span>EUR</span>
+						</div>
+						<span id="monthly-payment-text">${t("calc_monthly_result")}</span>
+                    </div>
+  
+                <div class="summary-bot-container">
+                    ${new SubmitBtn().render()}
+                </div>
               </div>
             </div>
         </div>
