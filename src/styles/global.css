@@ -28,8 +28,8 @@
     --bg-inner-box: #F1EEEE;
     --bg-inner: #ffffff;
     --bg-outer: #FDF6EE;
-    --bg-alternative: #FEECE0;
-    --bg-alternative2: #FFE4C5;
+    --bg-alternative: #C5569A;
+    /*--bg-alternative2: #;*/
 
     /* STEPS UI */
     --steps-outer: #FFE4C5;
@@ -41,29 +41,35 @@
     --steps-completed: #FF5F00;
     --steps-active: #FDC92A;
     --steps-inactive: #b58b76;
+
+    /* EXTRA UI */
+    --ui-extra: #DBF8ED;
+    --ui-extra1: #31A3AE;
+    --ui-extra2: #257886;
+    --ui-extra4: #FF5F00;
 }
 
 [data-theme="dark"] {
     --primary-active: #FB4F00;
-    --primary-active-shadow: #FF5F00;
+    --primary-active-shadow: #cf4000;
     --primary-inactive: #FFBF99;
 
     --secondary-active: #FDC92A;
     --secondary-inactive: #F1EEEE;
 
     /* [DARK] TEXTS */
-    --text-main: #F2EDEB;
+    --text-main: #d3cecd;
     --text-main-alt: #F2EDEB29;
     --text-header: #FB4F00;
-    --text-alternative: #31A3AE;
+    --text-alternative: #257886;
     --text-hover: #512B2B08;
 
     /* [DARK] BACKGROUND */
-    --bg-inner-box: #1B1B1B;
+    --bg-inner-box: #121212;
     --bg-inner: #2E2E2E;
     --bg-outer: #121212;
-    --bg-alternative: #FEECE0;
-    --bg-alternative2: #FFE4C5;
+    --bg-alternative: #525252;
+    /*--bg-alternative2: #;*/
 
     /* [DARK] STEPS */
     --steps-outer: #4C4947;
@@ -72,9 +78,15 @@
     --steps-text-inactive: #6A5C54;
     --steps-text-completed: #FFFFFF;
 
-    --steps-completed: #8F715F;
+    --steps-completed: #FB4F00;
     --steps-active: #FDC92A;
     --steps-inactive: #121212;
+
+    /* [DARK] EXTRA UI */
+    --ui-extra: #257886;
+    --ui-extra1: #085663;
+    --ui-extra2: #0B3E47;
+    --ui-extra4: #FFFFFF;
 }
 
 /* DEFAULT OVERRIDE */

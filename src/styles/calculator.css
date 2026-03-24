@@ -165,7 +165,7 @@
 	flex-direction: row;
 	align-items: center;
 	justify-content: space-between;
-	background-color: #f1eeee;
+	background-color: var(--bg-inner-box);
 	margin-top: 1rem;
 	border-radius: 0.5rem;
 	padding: 1rem;
@@ -179,7 +179,7 @@
 	flex-direction: row;
 	align-items: center;
 	justify-content: space-between;
-	background-color: #f1eeee;
+	background-color: var(--bg-inner-box);
 	padding: 1rem;
 }
 
@@ -282,6 +282,19 @@ input[type="range"]::-webkit-slider-thumb {
 	cursor: pointer;
 }
 
+#income-dropdown,
+#interest-dropdown,
+#period-dropdown {
+	background-color: var(--bg-inner-box);
+	color: var(--text-main);
+	border-radius: 4px;
+}
+#additional-info {
+	background-color: var(--bg-inner-box);
+	color: var(--text-main);
+	border-radius: 4px;
+}
+
 /* BOTTOM SECTION */
 .result-section {
 	display: flex;
@@ -301,6 +314,7 @@ input[type="range"]::-webkit-slider-thumb {
 .result-col-left {
 	display: flex;
 	flex-direction: column;
+	justify-content: space-between;
 }
 
 .result-col-left h2 {
@@ -314,7 +328,7 @@ input[type="range"]::-webkit-slider-thumb {
 	display: flex;
 	flex-direction: column;
 
-	justify-content: space-evenly;
+	justify-content: space-between;
 	align-items: center;
 	gap: 1rem;
 }
@@ -348,10 +362,10 @@ input[type="range"]::-webkit-slider-thumb {
 }
 
 .result-container-right {
-	background: #31a3ae;
+	background: var(--ui-extra1);
 	padding: 1rem;
 	border-radius: 2rem;
-	border-bottom: 8px solid #257886;
+	border-bottom: 8px solid var(--ui-extra2);
 	display: flex;
 	flex-direction: column;
 }
@@ -388,7 +402,7 @@ input[type="range"]::-webkit-slider-thumb {
 }
 
 .final-price {
-	background-color: #e2f5ef;
+	background-color: var(--ui-extra);
 	border-radius: 1rem;
 	width: 100%;
 	display: flex;
@@ -407,7 +421,7 @@ input[type="range"]::-webkit-slider-thumb {
 }
 
 .final-price span#monthly-payment-result {
-	color: var(--primary-active);
+	color: var(--ui-extra4);
 	font-size: 3rem;
 	font-weight: 900;
 	line-height: 1;
@@ -424,7 +438,7 @@ input[type="range"]::-webkit-slider-thumb {
 	content: "MONTHLY PAYMENT";
 	display: block;
 	font-size: 22px;
-	color: var(--text-main-alt);
+	color: var(--text-main);
 	font-weight: 800;
 	margin-top: 1rem;
 	padding-left: 1rem;
@@ -473,9 +487,15 @@ input[type="range"]::-webkit-slider-thumb {
 	align-items: flex-start;
 	gap: 1rem;
 	cursor: pointer;
-	color: var(--primary-active);
+	color: var(--text-main);
 	font-weight: 700;
 	font-size: 1rem;
+}
+.terms-link{
+	color: var(--text-alternative)
+}
+.required-star{
+	color: var(--primary-active);
 }
 
 /* STEP 5: SUMMARY */
@@ -621,7 +641,7 @@ input[type="range"]::-webkit-slider-thumb {
 
 .submit-apl-btn {
 	background-color: var(--primary-active);
-	color: var(--bg-inner);
+	color: #FFFFFF;
 
 	font-family: "Roboto", sans-serif;
 	font-size: 2rem;

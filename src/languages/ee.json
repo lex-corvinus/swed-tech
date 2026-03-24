@@ -1,4 +1,11 @@
 {
+  "header_contacts": "Kontakt",
+  "header_search": "Otsing",
+
+  "header_nav_home": "Avaleht",
+  "header_nav_calculator": "Laenukalkulaator",
+  "header_nav_extra": "Lisad",
+
   "step_what": "Mis",
   "step_when": "Millal",
   "step_why": "Miks",
@@ -65,7 +72,7 @@
 
   "step3_consent_terms_text": "Nõustun",
   "step3_consent_terms_link": "kasutustingimustega",
-  "step3_consent_privacy": "Nõustun privaatsuspoliitikaga *",
+  "step3_consent_privacy": "Nõustun privaatsuspoliitikaga",
   "step3_consent_marketing": "Soovin saada laenupakkumisi (Valikuline)",
 
   "step4_label": "Lisainfo:",

@@ -1,4 +1,11 @@
 {
+  "header_contacts": "Contact",
+  "header_search": "Search",
+
+  "header_nav_home": "Home",
+  "header_nav_calculator": " Loan Calculator",
+  "header_nav_extra": "Extras",
+
   "step_what": "What",
   "step_when": "When",
   "step_why": "Why",
@@ -65,7 +72,7 @@
 
   "step3_consent_terms_text": "I agree to the",
   "step3_consent_terms_link": "Terms and Conditions",
-  "step3_consent_privacy": "I agree to the Privacy Policy *",
+  "step3_consent_privacy": "I agree to the Privacy Policy",
   "step3_consent_marketing": "Send me loan offers (Optional)",
 
   "step4_label": "Additional info:",

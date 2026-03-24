@@ -1,4 +1,11 @@
 {
+  "header_contacts": "Контакты",
+  "header_search": "Поиск",
+
+  "header_nav_home": "Главная",
+  "header_nav_calculator": "Кредитный калькулятор",
+  "header_nav_extra": "Дополнительно",
+
   "step_what": "Что",
   "step_when": "Когда",
   "step_why": "Зачем",
@@ -65,7 +72,7 @@
 
   "step3_consent_terms_text": "Я согласен с",
   "step3_consent_terms_link": "Условиями использования",
-  "step3_consent_privacy": "Я согласен с Политикой конфиденциальности *",
+  "step3_consent_privacy": "Я согласен с Политикой конфиденциальности",
   "step3_consent_marketing": "Присылайте мне предложения по кредитам (Необязательно)",
 
   "step4_label": "Дополнительная информация:",

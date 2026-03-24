@@ -157,11 +157,11 @@ export class Step2 extends Component {
                 <div class="input-group">
                   <label>Your income:</label>
                   <div class="select-wrapper">
-										<select id="income-dropdown">
-											<option value="low" ${income === `${INCOME_MAP.low}` ? "selected" : ""}>${t('step2_income_low')}</option>
-											<option value="medium" ${income === `${INCOME_MAP.medium}` ? "selected" : ""}>${t('step2_income_medium')}</option>
-											<option value="high" ${income === `${INCOME_MAP.high}` ? "selected" : ""}>${t('step2_income_high')}</option>
-										</select>
+					<select id="income-dropdown">
+						<option value="low" ${income === `${INCOME_MAP.low}` ? "selected" : ""}>${t('step2_income_low')}</option>
+						<option value="medium" ${income === `${INCOME_MAP.medium}` ? "selected" : ""}>${t('step2_income_medium')}</option>
+						<option value="high" ${income === `${INCOME_MAP.high}` ? "selected" : ""}>${t('step2_income_high')}</option>
+					</select>
                   </div>
                 </div>
 
