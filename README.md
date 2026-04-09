@@ -43,7 +43,9 @@
 
 ---
 
-### RELOAD
+### BUILD & RELOAD
+
+> To launch the application using **index.html** -> run ```npm run build```, which will compile & bundle all code into a single **index.html**, located inside ```dist``` directory
 
 After any changes inside source code, run ```npm run build``` for the method (1) to reload; Method (2) reloads automatically.
 
@@ -71,7 +73,7 @@ Loan Calculator -> by navigating to ```Loan Calculator``` tab, OR pressing **STA
 * ```Enter``` for opening dropdowns & triggering buttons.
 * ```SPACE``` - for checking consent checkboxes
 
-### Extras: 
+### Extras:
 ```Extras``` tab in the navigation menu on top -> see links to github repo, Figma & Shorcut Board.
 
 ## IV. FEATURES
@@ -79,10 +81,10 @@ Loan Calculator -> by navigating to ```Loan Calculator``` tab, OR pressing **STA
 ---
 
 ### Core
-1. **Single layout design:** dynamic "main-content" and partials used for static components(Header + Footer) → prevents unnecessary refreshing, consistent UI(no flickering), slight performance improvement.
-2. **Hash-based navigation** → one event "hashchange" instead of multiple clicks for each navigation link, prevents unnecessary page refresh.
-3. **State-driven Declaration** → abstracts imperative programming, such as repetitive DOM manipulation logic.
-4. **State management:** Automatically triggers UI update upon data change.
+1. **Single layout design:** "main-content" for dynamic pages and partials used for static components(Header + Footer) → prevents unnecessary refreshing, consistent UI(no flickering), minor performance improvement.
+2. **Hash-based navigation** → one event listener for "hashchange" instead of multiple ones for each navigation link, prevents unnecessary page refresh, minor performance improvement.
+3. **State-driven Declaration** → abstracts imperative programming, such as repetitive DOM manipulation logic, components build using "Component class" auto mount & unmount DOM elements and event listeners on hash change, average performance improvement.
+4. **State management:** Automatically triggers UI update upon data change, single source of truth principle for data.
 5. **Event Delegation & Centralization** → binds a single event listener to the root container rather than individual DOM elements, optimizing memory usage and ensuring complete removal during component destruction.
 
 ---
@@ -90,5 +92,13 @@ Loan Calculator -> by navigating to ```Loan Calculator``` tab, OR pressing **STA
 ### Extra
 6. **UI& UX Design made using Figma**: https://www.figma.com/design/4zkxUawp1PJ6gUiHnqfvGN/SWEDBANK?node-id=0-1&t=hPUyIWZGgM8GPrYl-1
 7. **Dual theme**: Dark/Light theme optimization for all interfaces → accessibility improvement.
-8. **Render-based translation** → avoids overloading DOM, most cost-effective translation.
+8. **Render-based translation** → avoids overloading DOM, most cost-effective translation method.
 9. **Responsive Design** for Mobile devices -> accessibility improvement.
+
+---
+
+## V. VERSIONS
+
+1.0.0 JobFair launch
+
+1.0.1 - ```/dist/``` and ```index.html``` removed from gitignore & pushed to repository + minor README updates

@@ -1,6 +1,6 @@
 {
 	"name": "swed-tech",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"description": "",
 	"homepage": "https://github.com/lex-corvinus/swed-tech#readme",
 	"bugs": {
@@ -14,7 +14,7 @@
 	"type": "module",
 	"devDependencies": {
 		"@biomejs/biome": "2.4.8",
-		"vite": "=8.0.1",
+		"vite": "=8.0.8",
 		"vite-plugin-singlefile": "=2.3.2",
 		"vitest": "=4.1.0"
 	},
@@ -22,7 +22,6 @@
 		"dev": "vite",
 		"build": "vite build",
 		"test": "vitest",
-
 		"format": "biome format --write .",
 		"lint": "biome lint .",
 		"check": "biome check --write ."
